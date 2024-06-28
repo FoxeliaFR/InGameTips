@@ -1,6 +1,8 @@
 package fr.foxelia.ingametips;
 
 import com.mojang.logging.LogUtils;
+import fr.foxelia.ingametips.subscribers.PopUpRenderer;
+import fr.foxelia.ingametips.test.TestCommand;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.server.ServerStartingEvent;
@@ -43,6 +45,7 @@ public class InGameTips
     public void onServerStarting(ServerStartingEvent event)
     {
         // Do something when the server starts
+        TestCommand.register(event.getServer().getCommands().getDispatcher()); // REMOVE THIS LINE BEFORE PRODUCTION
     }
 
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
@@ -52,7 +55,9 @@ public class InGameTips
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
-            // Some client setup code
+            new PopUpManager();
+            IEventBus eventBus = MinecraftForge.EVENT_BUS;
+            eventBus.register(new PopUpRenderer());
         }
     }
 }

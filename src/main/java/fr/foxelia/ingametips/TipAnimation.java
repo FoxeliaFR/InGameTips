@@ -8,6 +8,7 @@ import net.minecraft.network.chat.FormattedText;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.FormattedCharSequence;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TipAnimation {
@@ -15,6 +16,7 @@ public class TipAnimation {
     private static final int ANIMATION_DURATION = 300;
     private static final int MAX_LINE_WIDTH = 240;
     private static final int OFFSET = 4;
+    private static final int MAX_LINES = 7;
     private final Minecraft mc = Minecraft.getInstance();
     private final PopUp current;
     private final long startEnd;
@@ -31,7 +33,10 @@ public class TipAnimation {
         this.current = popUp;
         startEnd = current.getDisplayTime() - ANIMATION_DURATION;
         Font fontRenderer = mc.font;
-        lines = fontRenderer.split(FormattedText.of(popUp.getTip()), MAX_LINE_WIDTH);
+        lines = new ArrayList<>(fontRenderer.split(FormattedText.of(popUp.getTip()), MAX_LINE_WIDTH));
+        if(lines.size() > MAX_LINES) {
+            lines.subList(MAX_LINES, lines.size()).clear();
+        }
         numLines = lines.size();
         backgroundHeight = popUp.getBackgroundHeight(numLines);
         blitOffset = popUp.getBlitOffset(numLines);
@@ -79,10 +84,6 @@ public class TipAnimation {
 
     public List<FormattedCharSequence> getLines() {
         return lines;
-    }
-
-    public int getNumberLines() {
-        return numLines;
     }
 
     public int getBackgroundHeight() {

@@ -1,6 +1,7 @@
 package fr.foxelia.ingametips;
 
 import com.mojang.logging.LogUtils;
+import fr.foxelia.ingametips.network.InGameTipsPacketHandler;
 import fr.foxelia.ingametips.subscribers.PopUpRenderer;
 import fr.foxelia.ingametips.test.TestCommand;
 import net.minecraftforge.api.distmarker.Dist;
@@ -20,6 +21,16 @@ import org.slf4j.Logger;
 @Mod(InGameTips.MOD_ID)
 public class InGameTips
 {
+
+    /*
+     * TODO:
+     *  - Send packets to clients to display tips
+     *  - Client config : enable/disable tips
+     *  - Server config : Scheduled tips (every x minutes) / Disable mod specific tips
+     *  - Add tips via datapack
+     *  - Localize tips
+     */
+
     // Define mod id in a common place for everything to reference
     public static final String MOD_ID = "igtips";
     // Directly reference a slf4j logger
@@ -30,6 +41,9 @@ public class InGameTips
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         modEventBus.addListener(this::commonSetup);
+
+        // Register the packet handler
+        InGameTipsPacketHandler.registerPackets();
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);

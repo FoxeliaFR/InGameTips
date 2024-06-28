@@ -2,20 +2,17 @@ package fr.foxelia.ingametips.client;
 
 public class PopUp implements ITip {
 
-    private boolean shown = false;
-    private int displayTime = 5000;
+    private final int displayTime;
+    private final String message;
+
+    public PopUp(String message, int displayTime) {
+        this.message = message;
+        this.displayTime = displayTime;
+    }
 
     @Override
     public String getTip() {
-        return "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
-    }
-
-    public boolean isShown() {
-        return shown;
-    }
-
-    protected void setShown(boolean shown) {
-        this.shown = shown;
+        return message;
     }
 
     public int getBlitOffset(int lines) {

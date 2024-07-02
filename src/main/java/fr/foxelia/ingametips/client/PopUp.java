@@ -11,7 +11,7 @@ public class PopUp implements ITip {
     }
 
     @Override
-    public String getTip() {
+    public String getMessage() {
         return message;
     }
 

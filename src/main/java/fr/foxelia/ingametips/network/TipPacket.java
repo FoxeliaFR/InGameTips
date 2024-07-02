@@ -1,13 +1,14 @@
 package fr.foxelia.ingametips.network;
 
+import fr.foxelia.ingametips.client.ITip;
 import fr.foxelia.ingametips.client.PopUp;
 import net.minecraft.network.FriendlyByteBuf;
 import org.jetbrains.annotations.NotNull;
 
-public record TipPacket(@NotNull PopUp tip) {
+public record TipPacket(@NotNull ITip tip) {
 
     public TipPacket {
-        if (tip.getTip().length() > 32767) {
+        if (tip.getMessage().length() > 32767) {
             throw new IllegalArgumentException("Message is too long");
         }
         if (tip.getDisplayTime() < 0) {
@@ -16,7 +17,7 @@ public record TipPacket(@NotNull PopUp tip) {
     }
 
     public static void encode(TipPacket packet, FriendlyByteBuf buffer) {
-        buffer.writeUtf(packet.tip().getTip());
+        buffer.writeUtf(packet.tip().getMessage());
         buffer.writeInt(packet.tip().getDisplayTime());
     }
 

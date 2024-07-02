@@ -33,7 +33,7 @@ public class TipAnimation {
         this.current = popUp;
         startEnd = current.getDisplayTime() - ANIMATION_DURATION;
         Font fontRenderer = mc.font;
-        lines = new ArrayList<>(fontRenderer.split(FormattedText.of(popUp.getTip()), MAX_LINE_WIDTH));
+        lines = new ArrayList<>(fontRenderer.split(FormattedText.of(popUp.getMessage()), MAX_LINE_WIDTH));
         if(lines.size() > MAX_LINES) {
             lines.subList(MAX_LINES, lines.size()).clear();
         }

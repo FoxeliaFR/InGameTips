@@ -25,7 +25,7 @@ import java.util.Random;
  */
 public class TestCommand {
     public static void register(CommandDispatcher<CommandSourceStack> dispatcher) {
-        LiteralArgumentBuilder<CommandSourceStack> command = Commands.literal("testtip")
+        LiteralArgumentBuilder<CommandSourceStack> command = Commands.literal("test_debug")
                 .executes(TestCommand::execute);
 
         dispatcher.register(command);
@@ -37,18 +37,6 @@ public class TestCommand {
             return 0;
         }
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> TestCommand::test);
-        Random random = new Random();
-        Collection<TranslatableTip> tips = TipRegistry.getAllTips().values();
-        if(tips.isEmpty()) {
-            return 0;
-        }
-        TranslatableTip tip = (TranslatableTip) tips.toArray()[random.nextInt(tips.size())];
-        // Get language from player
-        String language = source.getPlayer().getLanguage();
-        System.out.println(language); // Debug
-        TipPacket packet = new TipPacket(tip.toBasicTip(language));
-        //TipPacket packet = new TipPacket(new BasicTip("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", 5000));
-        InGameTipsPacketHandler.CHANNEL.sendTo(packet, source.getPlayer().connection.connection, NetworkDirection.PLAY_TO_CLIENT);
         return 1;
     }
 

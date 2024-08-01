@@ -1,6 +1,7 @@
 package fr.foxelia.ingametips;
 
 import com.mojang.logging.LogUtils;
+import fr.foxelia.ingametips.datapack.TipLoader;
 import fr.foxelia.ingametips.network.InGameTipsPacketHandler;
 import fr.foxelia.ingametips.subscribers.PopUpRenderer;
 import fr.foxelia.ingametips.test.TestCommand;
@@ -24,8 +25,8 @@ public class InGameTips
      * TODO:
      *  - Client config : enable/disable tips
      *  - Server config : Scheduled tips (every x minutes) / Disable mod specific tips
-     *  - Add tips via datapack
      *  - Optimize rendering (draw text on a texture)
+     *  - Command to display a tip
      */
 
     // Define mod id in a common place for everything to reference
@@ -49,7 +50,8 @@ public class InGameTips
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
-        // Do something common setup
+        TipLoader.register(MinecraftForge.EVENT_BUS);
+
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call

@@ -2,6 +2,7 @@ package fr.foxelia.ingametips.config;
 
 import net.minecraftforge.common.ForgeConfigSpec;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class InGameTipsCommonConfigs {
@@ -16,7 +17,7 @@ public class InGameTipsCommonConfigs {
      *  - Sync tips with all players (All players receive the same tip at the same time)
      */
     public static ForgeConfigSpec.ConfigValue<Integer> scheduleTime;
-    public static ForgeConfigSpec.ConfigValue<List<String>> disabledNamespaces;
+    public static ForgeConfigSpec.ConfigValue<List<? extends String>> disabledNamespaces;
     public static ForgeConfigSpec.ConfigValue<Boolean> syncTipsWithAllPlayers;
 
 
@@ -26,7 +27,7 @@ public class InGameTipsCommonConfigs {
         scheduleTime = COMMON_BUILDER.comment("The time in minutes between each tip. Set to 0 to disable scheduled tips.")
                 .defineInRange("scheduleTime", 5, 0, Integer.MAX_VALUE);
         disabledNamespaces = COMMON_BUILDER.comment("List of mod namespaces to disable tips from")
-                .define("disabledNamespaces", List.of());
+                .defineList("disabledNamespaces", new ArrayList<>(), obj -> obj instanceof String);
         syncTipsWithAllPlayers = COMMON_BUILDER.comment("All players receive the same tip at the same time")
                 .define("syncTipsWithAllPlayers", true);
 

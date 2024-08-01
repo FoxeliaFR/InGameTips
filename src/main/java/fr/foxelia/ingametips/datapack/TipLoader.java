@@ -3,6 +3,8 @@ package fr.foxelia.ingametips.datapack;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonSyntaxException;
+import fr.foxelia.ingametips.InGameTips;
+import fr.foxelia.ingametips.config.InGameTipsCommonConfigs;
 import fr.foxelia.ingametips.tip.TranslatableTip;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManager;
@@ -27,6 +29,9 @@ public class TipLoader extends SimpleJsonResourceReloadListener {
         int tipCount = 0;
         TipRegistry.reset();
         for (Map.Entry<ResourceLocation, JsonElement> entry : objectIn.entrySet()) {
+            if(InGameTipsCommonConfigs.disabledNamespaces.get().contains(entry.getKey().getNamespace())) {
+                continue;
+            }
             try {
                 TipData tipData = GSON.fromJson(entry.getValue(), TipData.class);
                 TranslatableTip tip;

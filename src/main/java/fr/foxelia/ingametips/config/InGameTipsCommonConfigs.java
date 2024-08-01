@@ -13,7 +13,6 @@ public class InGameTipsCommonConfigs {
     /*
      * TODO:
      *  - Schedule time (every x minutes)
-     *  - Disable mod specific tips (Disable tips from a specific mod with a list of name spaces)
      *  - Sync tips with all players (All players receive the same tip at the same time)
      */
     public static ForgeConfigSpec.ConfigValue<Integer> scheduleTime;
@@ -26,7 +25,7 @@ public class InGameTipsCommonConfigs {
 
         scheduleTime = COMMON_BUILDER.comment("The time in minutes between each tip. Set to 0 to disable scheduled tips.")
                 .defineInRange("scheduleTime", 5, 0, Integer.MAX_VALUE);
-        disabledNamespaces = COMMON_BUILDER.comment("List of mod namespaces to disable tips from")
+        disabledNamespaces = COMMON_BUILDER.comment("List of mod namespaces to disable tips from.\nExample: [\"modid\", \"datapackid\"]")
                 .defineList("disabledNamespaces", new ArrayList<>(), obj -> obj instanceof String);
         syncTipsWithAllPlayers = COMMON_BUILDER.comment("All players receive the same tip at the same time")
                 .define("syncTipsWithAllPlayers", true);

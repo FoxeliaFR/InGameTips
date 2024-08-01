@@ -1,7 +1,7 @@
 package fr.foxelia.ingametips.network;
 
 import fr.foxelia.ingametips.overlay.PopUpManager;
-import fr.foxelia.ingametips.client.PopUp;
+import fr.foxelia.ingametips.tip.PopUp;
 import net.minecraftforge.network.NetworkDirection;
 import net.minecraftforge.network.NetworkEvent;
 

@@ -1,6 +1,6 @@
 package fr.foxelia.ingametips.datapack;
 
-import fr.foxelia.ingametips.client.TranslatableTip;
+import fr.foxelia.ingametips.tip.TranslatableTip;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.Nullable;
 

@@ -3,7 +3,7 @@ package fr.foxelia.ingametips.datapack;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonSyntaxException;
-import fr.foxelia.ingametips.client.TranslatableTip;
+import fr.foxelia.ingametips.tip.TranslatableTip;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.SimpleJsonResourceReloadListener;

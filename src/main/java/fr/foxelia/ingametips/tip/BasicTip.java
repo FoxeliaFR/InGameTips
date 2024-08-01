@@ -1,4 +1,4 @@
-package fr.foxelia.ingametips.client;
+package fr.foxelia.ingametips.tip;
 
 public record BasicTip(String message, int displayTime) implements ITip {
 

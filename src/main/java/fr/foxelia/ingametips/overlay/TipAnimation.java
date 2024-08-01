@@ -1,6 +1,6 @@
 package fr.foxelia.ingametips.overlay;
 
-import fr.foxelia.ingametips.client.PopUp;
+import fr.foxelia.ingametips.tip.PopUp;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.resources.sounds.SimpleSoundInstance;

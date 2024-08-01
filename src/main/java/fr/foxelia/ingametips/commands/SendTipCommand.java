@@ -1,13 +1,11 @@
 package fr.foxelia.ingametips.commands;
 
-import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import fr.foxelia.ingametips.client.TranslatableTip;
+import fr.foxelia.ingametips.tip.TranslatableTip;
 import fr.foxelia.ingametips.datapack.TipRegistry;
 import fr.foxelia.ingametips.network.InGameTipsPacketHandler;
 import fr.foxelia.ingametips.network.TipPacket;
-import net.minecraft.client.resources.language.I18n;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.commands.arguments.ResourceLocationArgument;
@@ -17,7 +15,6 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.network.NetworkDirection;
 
 import java.util.Collection;
-import java.util.function.Supplier;
 
 public class SendTipCommand {
 

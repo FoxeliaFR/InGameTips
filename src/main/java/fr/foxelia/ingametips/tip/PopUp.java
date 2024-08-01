@@ -1,4 +1,4 @@
-package fr.foxelia.ingametips.client;
+package fr.foxelia.ingametips.tip;
 
 public class PopUp implements ITip {
 

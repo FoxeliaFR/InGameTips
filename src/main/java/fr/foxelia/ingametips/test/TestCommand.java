@@ -3,21 +3,11 @@ package fr.foxelia.ingametips.test;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
-import fr.foxelia.ingametips.client.BasicTip;
-import fr.foxelia.ingametips.client.TranslatableTip;
-import fr.foxelia.ingametips.datapack.TipRegistry;
-import fr.foxelia.ingametips.network.InGameTipsPacketHandler;
-import fr.foxelia.ingametips.network.TipPacket;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.DistExecutor;
-import net.minecraftforge.network.NetworkDirection;
-
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Random;
 
 /**
  * REMOVE THIS CLASS

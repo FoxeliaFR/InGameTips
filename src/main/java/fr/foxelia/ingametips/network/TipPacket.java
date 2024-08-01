@@ -1,7 +1,7 @@
 package fr.foxelia.ingametips.network;
 
-import fr.foxelia.ingametips.client.ITip;
-import fr.foxelia.ingametips.client.PopUp;
+import fr.foxelia.ingametips.tip.ITip;
+import fr.foxelia.ingametips.tip.PopUp;
 import net.minecraft.network.FriendlyByteBuf;
 import org.jetbrains.annotations.NotNull;
 

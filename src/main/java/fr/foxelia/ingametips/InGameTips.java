@@ -1,22 +1,15 @@
 package fr.foxelia.ingametips;
 
 import com.mojang.logging.LogUtils;
-import fr.foxelia.ingametips.commands.TipCommand;
+import fr.foxelia.ingametips.commands.CommandRegistry;
 import fr.foxelia.ingametips.config.InGameTipsClientConfigs;
 import fr.foxelia.ingametips.config.InGameTipsCommonConfigs;
 import fr.foxelia.ingametips.datapack.TipLoader;
 import fr.foxelia.ingametips.network.InGameTipsPacketHandler;
-import fr.foxelia.ingametips.overlay.PopUpManager;
-import fr.foxelia.ingametips.test.TestCommand;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.server.ServerStartingEvent;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -40,27 +33,11 @@ public class InGameTips
         ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, InGameTipsClientConfigs.CLIENT_CONFIG, MOD_ID + "-client.toml");
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, InGameTipsCommonConfigs.COMMON_CONFIG, MOD_ID + "-common.toml");
 
-        // Register the setup method for modloading
-        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-        modEventBus.addListener(this::commonSetup);
-
         // Register the packet handler
         InGameTipsPacketHandler.registerPackets();
 
         // Register ourselves for server and other game events we are interested in
-        MinecraftForge.EVENT_BUS.register(this);
-    }
-
-    private void commonSetup(final FMLCommonSetupEvent event)
-    {
         TipLoader.register(MinecraftForge.EVENT_BUS);
-    }
-
-    // You can use SubscribeEvent and let the Event Bus discover methods to call
-    @SubscribeEvent
-    public void onServerStarting(ServerStartingEvent event)
-    {
-        TestCommand.register(event.getServer().getCommands().getDispatcher()); // REMOVE THIS LINE BEFORE PRODUCTION
-        TipCommand.register(event.getServer().getCommands().getDispatcher());
+        MinecraftForge.EVENT_BUS.register(CommandRegistry.class);
     }
 }

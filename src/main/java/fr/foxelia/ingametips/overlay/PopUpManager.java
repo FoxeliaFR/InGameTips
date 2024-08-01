@@ -1,4 +1,4 @@
-package fr.foxelia.ingametips;
+package fr.foxelia.ingametips.overlay;
 
 import com.google.common.collect.Queues;
 import fr.foxelia.ingametips.client.PopUp;

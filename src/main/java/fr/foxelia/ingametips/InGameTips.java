@@ -6,9 +6,8 @@ import fr.foxelia.ingametips.config.InGameTipsClientConfigs;
 import fr.foxelia.ingametips.config.InGameTipsCommonConfigs;
 import fr.foxelia.ingametips.datapack.TipLoader;
 import fr.foxelia.ingametips.network.InGameTipsPacketHandler;
-import fr.foxelia.ingametips.subscribers.PopUpRenderer;
+import fr.foxelia.ingametips.overlay.PopUpManager;
 import fr.foxelia.ingametips.test.TestCommand;
-import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -16,7 +15,6 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
@@ -29,7 +27,6 @@ public class InGameTips
     /*
      * TODO:
      *  - Server config : Scheduled tips (every x minutes) / Disable mod specific tips
-     *  - Optimize rendering (draw text on a texture)
      */
 
     // Define mod id in a common place for everything to reference
@@ -65,18 +62,5 @@ public class InGameTips
     {
         TestCommand.register(event.getServer().getCommands().getDispatcher()); // REMOVE THIS LINE BEFORE PRODUCTION
         TipCommand.register(event.getServer().getCommands().getDispatcher());
-    }
-
-    // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
-    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-    public static class ClientModEvents
-    {
-        @SubscribeEvent
-        public static void onClientSetup(FMLClientSetupEvent event)
-        {
-            new PopUpManager();
-            IEventBus eventBus = MinecraftForge.EVENT_BUS;
-            eventBus.register(new PopUpRenderer());
-        }
     }
 }

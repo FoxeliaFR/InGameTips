@@ -1,4 +1,4 @@
-package fr.foxelia.ingametips;
+package fr.foxelia.ingametips.overlay;
 
 import fr.foxelia.ingametips.client.PopUp;
 import net.minecraft.client.Minecraft;

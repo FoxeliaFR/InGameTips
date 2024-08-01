@@ -4,6 +4,8 @@ import net.minecraft.resources.ResourceLocation;
 
 public interface ITip {
 
+    int DEFAULT_DISPLAY_TIME = 5000;
+
     String getMessage();
 
     default ResourceLocation getBackground() {
@@ -11,6 +13,6 @@ public interface ITip {
     }
 
     default int getDisplayTime() {
-        return 5000;
+        return DEFAULT_DISPLAY_TIME;
     }
 }

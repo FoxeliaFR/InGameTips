@@ -3,8 +3,7 @@ package fr.foxelia.ingametips.test;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
-import fr.foxelia.ingametips.PopUpManager;
-import fr.foxelia.ingametips.client.PopUp;
+import fr.foxelia.ingametips.client.BasicTip;
 import fr.foxelia.ingametips.network.InGameTipsPacketHandler;
 import fr.foxelia.ingametips.network.TipPacket;
 import net.minecraft.commands.CommandSourceStack;
@@ -32,7 +31,7 @@ public class TestCommand {
             return 0;
         }
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> TestCommand::test);
-        TipPacket packet = new TipPacket(new PopUp("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", 5000));
+        TipPacket packet = new TipPacket(new BasicTip("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", 5000));
         InGameTipsPacketHandler.CHANNEL.sendTo(packet, source.getPlayer().connection.connection, NetworkDirection.PLAY_TO_CLIENT);
         return 1;
     }

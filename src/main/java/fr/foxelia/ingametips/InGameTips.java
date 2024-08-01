@@ -9,9 +9,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -24,21 +22,21 @@ public class InGameTips
 
     /*
      * TODO:
-     *  - Send packets to clients to display tips
      *  - Client config : enable/disable tips
      *  - Server config : Scheduled tips (every x minutes) / Disable mod specific tips
      *  - Add tips via datapack
-     *  - Localize tips
+     *  - Optimize rendering (draw text on a texture)
      */
 
     // Define mod id in a common place for everything to reference
     public static final String MOD_ID = "igtips";
     // Directly reference a slf4j logger
-    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LogUtils.getLogger();
 
     public InGameTips()
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
 
         modEventBus.addListener(this::commonSetup);
 
@@ -58,7 +56,6 @@ public class InGameTips
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event)
     {
-        // Do something when the server starts
         TestCommand.register(event.getServer().getCommands().getDispatcher()); // REMOVE THIS LINE BEFORE PRODUCTION
     }
 

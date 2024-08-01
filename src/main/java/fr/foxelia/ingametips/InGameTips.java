@@ -1,6 +1,7 @@
 package fr.foxelia.ingametips;
 
 import com.mojang.logging.LogUtils;
+import fr.foxelia.ingametips.commands.TipCommand;
 import fr.foxelia.ingametips.datapack.TipLoader;
 import fr.foxelia.ingametips.network.InGameTipsPacketHandler;
 import fr.foxelia.ingametips.subscribers.PopUpRenderer;
@@ -26,7 +27,6 @@ public class InGameTips
      *  - Client config : enable/disable tips
      *  - Server config : Scheduled tips (every x minutes) / Disable mod specific tips
      *  - Optimize rendering (draw text on a texture)
-     *  - Command to display a tip
      */
 
     // Define mod id in a common place for everything to reference
@@ -59,6 +59,7 @@ public class InGameTips
     public void onServerStarting(ServerStartingEvent event)
     {
         TestCommand.register(event.getServer().getCommands().getDispatcher()); // REMOVE THIS LINE BEFORE PRODUCTION
+        TipCommand.register(event.getServer().getCommands().getDispatcher());
     }
 
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent

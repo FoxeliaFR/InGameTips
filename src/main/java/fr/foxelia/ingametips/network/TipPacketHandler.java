@@ -13,7 +13,7 @@ public class TipPacketHandler {
         ctx.get().enqueueWork(() -> {
             NetworkDirection direction = ctx.get().getDirection();
             if (direction == NetworkDirection.PLAY_TO_CLIENT) {
-                PopUpManager.getInstance().queue(new PopUp(packet.tip().getMessage(), packet.tip().getDisplayTime()));
+                PopUpManager.getInstance().queue(new PopUp(packet.tip().message(), packet.tip().displayTime()));
             }
         });
         ctx.get().setPacketHandled(true);

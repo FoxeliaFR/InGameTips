@@ -8,17 +8,17 @@ import org.jetbrains.annotations.NotNull;
 public record TipPacket(@NotNull ITip tip) {
 
     public TipPacket {
-        if (tip.getMessage().length() > 32767) {
+        if (tip.message().length() > 32767) {
             throw new IllegalArgumentException("Message is too long");
         }
-        if (tip.getDisplayTime() < 0) {
+        if (tip.displayTime() < 0) {
             throw new IllegalArgumentException("Display time is negative");
         }
     }
 
     public static void encode(TipPacket packet, FriendlyByteBuf buffer) {
-        buffer.writeUtf(packet.tip().getMessage());
-        buffer.writeInt(packet.tip().getDisplayTime());
+        buffer.writeUtf(packet.tip().message());
+        buffer.writeInt(packet.tip().displayTime());
     }
 
     public static TipPacket decode(FriendlyByteBuf buffer) {

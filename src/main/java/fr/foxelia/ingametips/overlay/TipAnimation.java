@@ -31,9 +31,9 @@ public class TipAnimation {
 
     TipAnimation(PopUp popUp) {
         this.current = popUp;
-        startEnd = current.getDisplayTime() - ANIMATION_DURATION;
+        startEnd = current.displayTime() - ANIMATION_DURATION;
         Font fontRenderer = mc.font;
-        lines = new ArrayList<>(fontRenderer.split(FormattedText.of(popUp.getMessage()), MAX_LINE_WIDTH));
+        lines = new ArrayList<>(fontRenderer.split(FormattedText.of(popUp.message()), MAX_LINE_WIDTH));
         if(lines.size() > MAX_LINES) {
             lines.subList(MAX_LINES, lines.size()).clear();
         }
@@ -47,7 +47,7 @@ public class TipAnimation {
 
         if(elapsed > startEnd) {
             if(!endSoundPlayed) playSound = true;
-            return Math.min((float) (current.getDisplayTime() - elapsed) / ANIMATION_DURATION, 1.0f);
+            return Math.min((float) (current.displayTime() - elapsed) / ANIMATION_DURATION, 1.0f);
         } else if (elapsed > ANIMATION_DURATION) {
             return 1.0f;
         } else {
@@ -79,7 +79,7 @@ public class TipAnimation {
     }
 
     public boolean isAnimationFinished() {
-        return System.currentTimeMillis() - this.animationStartTime > current.getDisplayTime();
+        return System.currentTimeMillis() - this.animationStartTime > current.displayTime();
     }
 
     public List<FormattedCharSequence> getLines() {

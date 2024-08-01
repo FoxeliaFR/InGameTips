@@ -23,7 +23,7 @@ public class TranslatableTip implements ITip {
     }
 
     @Override
-    public String getMessage() {
+    public String message() {
         return getTipFromLang(DEFAULT_LANGUAGE);
     }
 
@@ -32,7 +32,7 @@ public class TranslatableTip implements ITip {
     }
 
     @Override
-    public int getDisplayTime() {
+    public int displayTime() {
         if (displayTime == -1) return DEFAULT_DISPLAY_TIME;
         return displayTime;
     }
@@ -46,6 +46,6 @@ public class TranslatableTip implements ITip {
     }
 
     public BasicTip toBasicTip(String languageCode) {
-        return new BasicTip(getTipFromLang(languageCode), getDisplayTime());
+        return new BasicTip(getTipFromLang(languageCode), displayTime());
     }
 }

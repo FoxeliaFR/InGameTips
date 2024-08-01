@@ -2,6 +2,7 @@ package fr.foxelia.ingametips;
 
 import com.google.common.collect.Queues;
 import fr.foxelia.ingametips.client.PopUp;
+import fr.foxelia.ingametips.config.InGameTipsClientConfigs;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Deque;
@@ -21,7 +22,7 @@ public class PopUpManager {
     }
 
     public void queue(PopUp popUp) {
-        queued.add(popUp);
+        if(InGameTipsClientConfigs.enableTips.get().booleanValue()) queued.add(popUp);
     }
 
     @Nullable

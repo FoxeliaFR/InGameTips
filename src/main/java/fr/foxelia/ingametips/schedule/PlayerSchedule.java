@@ -22,7 +22,6 @@ public class PlayerSchedule extends Schedule {
         if(tip == null) return;
 
         // Send the tip to the player
-        InGameTipsPacketHandler.CHANNEL.sendTo(new TipPacket(tip.toBasicTip(player.getLanguage())), player.connection.connection, NetworkDirection.PLAY_TO_CLIENT);
-
+        sendTip(player, tip);
     }
 }

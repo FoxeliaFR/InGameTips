@@ -11,14 +11,10 @@ public class InGameTipsCommonConfigs {
     public static final ForgeConfigSpec.Builder COMMON_BUILDER = new ForgeConfigSpec.Builder();
     public static final ForgeConfigSpec COMMON_CONFIG;
 
-    /*
-     * TODO:
-     *  - Schedule time (every x minutes)
-     *  - Sync tips with all players (All players receive the same tip at the same time)
-     */
     public static ForgeConfigSpec.ConfigValue<Integer> scheduleTime;
     public static ForgeConfigSpec.ConfigValue<List<? extends String>> disabledNamespaces;
-    public static ForgeConfigSpec.ConfigValue<Boolean> syncTipsWithAllPlayers;
+    public static ForgeConfigSpec.ConfigValue<Boolean> syncSendings;
+    public static ForgeConfigSpec.ConfigValue<Boolean> individualTips;
 
 
     static {
@@ -28,8 +24,14 @@ public class InGameTipsCommonConfigs {
                 .defineInRange("scheduleTime", 300, 0, Integer.MAX_VALUE);
         disabledNamespaces = COMMON_BUILDER.comment("List of mod namespaces to disable tips from.\nExample: [\"modid\", \"datapackid\"]")
                 .defineList("disabledNamespaces", new ArrayList<>(), obj -> obj instanceof String);
-        syncTipsWithAllPlayers = COMMON_BUILDER.comment("All players receive the same tip at the same time")
-                .define("syncTipsWithAllPlayers", true);
+
+        COMMON_BUILDER.pop();
+
+        COMMON_BUILDER.push("Synchronized sending");
+        syncSendings = COMMON_BUILDER.comment("If enabled, tips will be sent to all players at the same time.")
+                .define("syncSending", false);
+        individualTips = COMMON_BUILDER.comment("If enabled, each player will receive a different tip. This option is only available if synchronized sendings is enabled.")
+                .define("individualTips", false);
 
         COMMON_BUILDER.pop();
         COMMON_CONFIG = COMMON_BUILDER.build();

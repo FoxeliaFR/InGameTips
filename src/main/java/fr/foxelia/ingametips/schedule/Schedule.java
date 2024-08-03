@@ -3,8 +3,12 @@ package fr.foxelia.ingametips.schedule;
 import fr.foxelia.ingametips.config.InGameTipsCommonConfigs;
 import fr.foxelia.ingametips.data.TipHistory;
 import fr.foxelia.ingametips.datapack.TipRegistry;
+import fr.foxelia.ingametips.network.InGameTipsPacketHandler;
+import fr.foxelia.ingametips.network.TipPacket;
 import fr.foxelia.ingametips.tip.TranslatableTip;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraftforge.network.NetworkDirection;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Random;
@@ -50,6 +54,10 @@ public abstract class Schedule {
         getTipHistory().saveHistory();
     }
 
+    protected void sendTip(ServerPlayer player, TranslatableTip tip) {
+        InGameTipsPacketHandler.CHANNEL.sendTo(new TipPacket(tip.toBasicTip(player.getLanguage())), player.connection.connection, NetworkDirection.PLAY_TO_CLIENT);
+    }
+
     public void run() {
         currentTick++;
         if(shouldExecute()) {
@@ -67,5 +75,10 @@ public abstract class Schedule {
     }
 
     protected abstract void execute();
+
+    public void syncWithSchedule(Schedule schedule) {
+        currentTick = schedule.currentTick;
+        executionTick = schedule.executionTick;
+    }
 
 }

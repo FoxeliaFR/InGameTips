@@ -4,9 +4,15 @@ import com.mojang.logging.LogUtils;
 import fr.foxelia.ingametips.commands.CommandRegistry;
 import fr.foxelia.ingametips.config.InGameTipsClientConfigs;
 import fr.foxelia.ingametips.config.InGameTipsCommonConfigs;
+import fr.foxelia.ingametips.data.TipHistory;
 import fr.foxelia.ingametips.datapack.TipLoader;
 import fr.foxelia.ingametips.network.InGameTipsPacketHandler;
+import fr.foxelia.ingametips.schedule.ScheduleSubscriber;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.world.level.storage.LevelResource;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.server.ServerStartingEvent;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
@@ -27,6 +33,8 @@ public class InGameTips
     // Directly reference a slf4j logger
     public static final Logger LOGGER = LogUtils.getLogger();
 
+    public static MinecraftServer SERVER = null;
+
     public InGameTips()
     {
         // Register the config
@@ -37,7 +45,18 @@ public class InGameTips
         InGameTipsPacketHandler.registerPackets();
 
         // Register ourselves for server and other game events we are interested in
-        TipLoader.register(MinecraftForge.EVENT_BUS);
-        MinecraftForge.EVENT_BUS.register(CommandRegistry.class);
+        IEventBus modEventBus = MinecraftForge.EVENT_BUS;
+
+        TipLoader.register(modEventBus);
+        modEventBus.register(CommandRegistry.class);
+        modEventBus.addListener(InGameTips::onServerStarting);
+        modEventBus.register(TipHistory.class);
+        modEventBus.register(ScheduleSubscriber.class);
+    }
+
+    public static void onServerStarting(ServerStartingEvent event)
+    {
+        SERVER = event.getServer();
+        TipHistory.registerWorldData(event.getServer().getWorldPath(LevelResource.ROOT));
     }
 }

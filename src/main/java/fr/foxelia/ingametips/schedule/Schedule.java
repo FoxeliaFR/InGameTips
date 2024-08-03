@@ -11,6 +11,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.network.NetworkDirection;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
 
@@ -41,9 +42,17 @@ public abstract class Schedule {
     @Nullable
     private ResourceLocation getRandTip() {
         // Get all available tips
-        Set<ResourceLocation> availableTips = TipRegistry.getAllTips().keySet();
+        Set<ResourceLocation> availableTips = new HashSet<>(TipRegistry.getAllTips().keySet());
         availableTips.removeAll(getTipHistory().getViewedTips());
-        if(availableTips.isEmpty()) return null;
+        if(availableTips.isEmpty()) {
+            if(InGameTipsCommonConfigs.tipRecyling.get()) {
+                if(!TipRegistry.getAllTips().keySet().isEmpty()) {
+                    getTipHistory().getViewedTips().clear();
+                    return getRandTip();
+                }
+            }
+            return null;
+        }
 
         // Select a random tip
         return (ResourceLocation) availableTips.toArray()[new Random().nextInt(availableTips.size())];

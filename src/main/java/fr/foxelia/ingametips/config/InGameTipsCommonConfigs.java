@@ -15,6 +15,7 @@ public class InGameTipsCommonConfigs {
     public static ForgeConfigSpec.ConfigValue<List<? extends String>> disabledNamespaces;
     public static ForgeConfigSpec.ConfigValue<Boolean> syncSendings;
     public static ForgeConfigSpec.ConfigValue<Boolean> individualTips;
+    public static ForgeConfigSpec.ConfigValue<Boolean> tipRecyling;
 
 
     static {
@@ -24,6 +25,8 @@ public class InGameTipsCommonConfigs {
                 .defineInRange("scheduleTime", 300, 0, Integer.MAX_VALUE);
         disabledNamespaces = COMMON_BUILDER.comment("List of mod namespaces to disable tips from.\nExample: [\"modid\", \"datapackid\"]")
                 .defineList("disabledNamespaces", new ArrayList<>(), obj -> obj instanceof String);
+        tipRecyling = COMMON_BUILDER.comment("If enabled, tips will be recycled when all tips have been sent.")
+                .define("tipRecyling", false);
 
         COMMON_BUILDER.pop();
 

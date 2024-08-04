@@ -12,7 +12,10 @@ public class TipRegistry {
     private static final Map<ResourceLocation, TranslatableTip> TIPS = new HashMap<>();
 
     public static void registerTip(String datapackName, String fileName, TranslatableTip tip) {
-        ResourceLocation key = new ResourceLocation(datapackName, fileName);
+        registerTip(new ResourceLocation(datapackName, fileName), tip);
+    }
+
+    public static void registerTip(ResourceLocation key, TranslatableTip tip) {
         TIPS.put(key, tip);
     }
 

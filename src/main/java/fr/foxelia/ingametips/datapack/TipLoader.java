@@ -46,7 +46,7 @@ public class TipLoader extends SimpleJsonResourceReloadListener {
                 } else {
                     tip.setDisplayTime(-1);
                 }
-                TipRegistry.registerTip(entry.getKey().getNamespace(), entry.getKey().getPath(), tip);
+                TipRegistry.registerTip(entry.getKey(), tip);
                 tipCount++;
             } catch (JsonSyntaxException e) {
                 LOGGER.error("Error parsing JSON for tip {}: {}", entry.getKey(), e.getMessage());

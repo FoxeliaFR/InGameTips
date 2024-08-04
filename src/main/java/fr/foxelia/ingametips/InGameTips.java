@@ -52,6 +52,7 @@ public class InGameTips
         modEventBus.addListener(InGameTips::onServerStarting);
         modEventBus.register(TipHistory.class);
         modEventBus.register(ScheduleSubscriber.class);
+
     }
 
     public static void onServerStarting(ServerStartingEvent event)

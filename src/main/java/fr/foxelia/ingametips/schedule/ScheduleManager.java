@@ -1,10 +1,9 @@
 package fr.foxelia.ingametips.schedule;
 
+import fr.foxelia.ingametips.InGameTips;
 import fr.foxelia.ingametips.config.InGameTipsCommonConfigs;
-import fr.foxelia.ingametips.data.TipHistory;
 import net.minecraft.server.level.ServerPlayer;
-import org.checkerframework.checker.units.qual.C;
-import oshi.util.tuples.Pair;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -21,7 +20,7 @@ public class ScheduleManager {
     public void connect(ServerPlayer player) {
         if(InGameTipsCommonConfigs.syncSendings.get()) {
             if(InGameTipsCommonConfigs.individualTips.get()) {
-                Schedule copyFrom = schedules.isEmpty() ? null : schedules.values().iterator().next();
+                Schedule copyFrom = getFirstSchedule();
                 PlayerSchedule schedule = createPlayerSchedule(player);
                 if(copyFrom != null) schedule.syncWithSchedule(copyFrom);
             } else {
@@ -55,6 +54,58 @@ public class ScheduleManager {
         schedules.put(player.getStringUUID(), playerSchedule);
         return playerSchedule;
     }
+
+    @Nullable
+    private Schedule getFirstSchedule() {
+        return schedules.isEmpty() ? null : schedules.values().iterator().next();
+    }
+
+    public void refresh() {
+        if (InGameTipsCommonConfigs.syncSendings.get()) {
+            if (InGameTipsCommonConfigs.individualTips.get()) {
+                handleIndividualTips();
+            } else {
+                handleCommonSchedule();
+            }
+        } else {
+            updateAllSchedules();
+            reconnectServer();
+        }
+    }
+
+    private void handleIndividualTips() {
+        if (schedules.containsKey(COMMON_SCHEDULE)) {
+            schedules.remove(COMMON_SCHEDULE);
+            reconnectServer();
+        } else {
+            Schedule copyFrom = getFirstSchedule();
+            for (Schedule schedule : schedules.values()) {
+                schedule.updateExecutionTick();
+                schedule.syncWithSchedule(copyFrom);
+            }
+        }
+    }
+
+    private void handleCommonSchedule() {
+        if (!schedules.containsKey(COMMON_SCHEDULE)) {
+            createCommonSchedule();
+        } else {
+            updateAllSchedules();
+        }
+    }
+
+    private void updateAllSchedules() {
+        for (Schedule schedule : schedules.values()) {
+            schedule.updateExecutionTick();
+        }
+    }
+
+    private void reconnectServer() {
+        for (ServerPlayer player : InGameTips.SERVER.getPlayerList().getPlayers()) {
+            if(!schedules.containsKey(player.getStringUUID())) connect(player);
+        }
+    }
+
 
 
 

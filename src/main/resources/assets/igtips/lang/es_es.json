@@ -1,0 +1,7 @@
+{
+  "commands.igtips.tip.unknown": "El consejo {0} no existe. Asegúrese de que está utilizando el nombre correcto y de que está cargado en el servidor.",
+  "commands.igtips.tip.send.success": "Consejo {0} enviado a {1}.",
+
+
+  "tip.igtips.name": "Consejo"
+}

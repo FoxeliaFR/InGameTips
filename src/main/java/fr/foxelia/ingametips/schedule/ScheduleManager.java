@@ -15,7 +15,7 @@ public class ScheduleManager {
 
     protected static final String COMMON_SCHEDULE = "common";
 
-    private Map<String, Schedule> schedules = new HashMap<>();
+    private final Map<String, Schedule> schedules = new HashMap<>();
 
     public void connect(ServerPlayer player) {
         if(InGameTipsCommonConfigs.syncSendings.get()) {
@@ -33,9 +33,7 @@ public class ScheduleManager {
 
     public void disconnect(UUID player) {
         String key = player.toString();
-        if(schedules.containsKey(key)) {
-            schedules.remove(key);
-        }
+        schedules.remove(key);
     }
 
     public void tick() {

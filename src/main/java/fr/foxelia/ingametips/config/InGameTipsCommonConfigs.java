@@ -1,6 +1,5 @@
 package fr.foxelia.ingametips.config;
 
-import fr.foxelia.ingametips.tip.PopUp;
 import net.minecraftforge.common.ForgeConfigSpec;
 
 import java.util.ArrayList;

@@ -2,10 +2,10 @@ package fr.foxelia.ingametips.commands;
 
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import fr.foxelia.ingametips.tip.TranslatableTip;
 import fr.foxelia.ingametips.datapack.TipRegistry;
 import fr.foxelia.ingametips.network.InGameTipsPacketHandler;
 import fr.foxelia.ingametips.network.TipPacket;
+import fr.foxelia.ingametips.tip.TranslatableTip;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.commands.arguments.ResourceLocationArgument;

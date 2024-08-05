@@ -3,7 +3,6 @@ package fr.foxelia.ingametips.datapack;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonSyntaxException;
-import fr.foxelia.ingametips.InGameTips;
 import fr.foxelia.ingametips.config.InGameTipsCommonConfigs;
 import fr.foxelia.ingametips.tip.TranslatableTip;
 import net.minecraft.resources.ResourceLocation;
@@ -13,9 +12,9 @@ import net.minecraft.util.profiling.ProfilerFiller;
 import net.minecraftforge.event.AddReloadListenerEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 
-import static fr.foxelia.ingametips.InGameTips.LOGGER;
-
 import java.util.Map;
+
+import static fr.foxelia.ingametips.InGameTips.LOGGER;
 
 public class TipLoader extends SimpleJsonResourceReloadListener {
     private static final Gson GSON = new Gson();

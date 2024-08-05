@@ -1,8 +1,8 @@
 package fr.foxelia.ingametips.overlay;
 
 import com.google.common.collect.Queues;
-import fr.foxelia.ingametips.tip.PopUp;
 import fr.foxelia.ingametips.config.InGameTipsClientConfigs;
+import fr.foxelia.ingametips.tip.PopUp;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Deque;

@@ -2,7 +2,6 @@ package fr.foxelia.ingametips.data;
 
 import fr.foxelia.ingametips.InGameTips;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.level.ServerPlayer;
 
 import java.io.*;
 import java.nio.file.Path;

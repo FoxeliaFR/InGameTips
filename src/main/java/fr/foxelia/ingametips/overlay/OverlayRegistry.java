@@ -1,7 +1,6 @@
 package fr.foxelia.ingametips.overlay;
 
 import fr.foxelia.ingametips.InGameTips;
-import fr.foxelia.ingametips.overlay.PopUpOverlay;
 import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;

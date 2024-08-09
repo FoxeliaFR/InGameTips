@@ -18,6 +18,7 @@ public class ScheduleManager {
     private final Map<String, Schedule> schedules = new HashMap<>();
 
     public void connect(ServerPlayer player) {
+        if(InGameTipsCommonConfigs.scheduleTime.get() == 0) return;
         if(InGameTipsCommonConfigs.syncSendings.get()) {
             if(InGameTipsCommonConfigs.individualTips.get()) {
                 Schedule copyFrom = getFirstSchedule();
@@ -59,6 +60,10 @@ public class ScheduleManager {
     }
 
     public void refresh() {
+        if(InGameTipsCommonConfigs.scheduleTime.get() == 0) {
+            schedules.clear();
+            return;
+        }
         if (InGameTipsCommonConfigs.syncSendings.get()) {
             if (InGameTipsCommonConfigs.individualTips.get()) {
                 handleIndividualTips();

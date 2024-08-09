@@ -9,7 +9,7 @@ public interface ITip {
     String message();
 
     default ResourceLocation getBackground() {
-        return new ResourceLocation("igtips", "textures/gui/tip.png");
+        return new ResourceLocation("igtips", "textures/gui/popup.png");
     }
 
     default int displayTime() {

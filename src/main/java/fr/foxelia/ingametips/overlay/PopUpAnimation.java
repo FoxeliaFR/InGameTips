@@ -11,7 +11,7 @@ import net.minecraft.util.FormattedCharSequence;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TipAnimation {
+public class PopUpAnimation {
 
     private static final int ANIMATION_DURATION = 300;
     private static final int MAX_LINE_WIDTH = 240;
@@ -27,7 +27,7 @@ public class TipAnimation {
     private boolean playSound = true;
     private boolean endSoundPlayed = false;
 
-    TipAnimation(PopUp popUp) {
+    PopUpAnimation(PopUp popUp) {
         this.current = popUp;
         startEnd = current.displayTime() - ANIMATION_DURATION;
         Font fontRenderer = mc.font;

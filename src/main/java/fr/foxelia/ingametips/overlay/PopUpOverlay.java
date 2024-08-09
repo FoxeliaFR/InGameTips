@@ -20,7 +20,7 @@ public class PopUpOverlay implements IGuiOverlay {
 
         PopUp popUp = manager.getQueued();
         if (popUp == null) return;
-        TipAnimation animation = manager.getAnimation();
+        PopUpAnimation animation = manager.getAnimation();
 
         int popUpStart = (screenWidth - 256) / 2;
         int y = animation.getY();

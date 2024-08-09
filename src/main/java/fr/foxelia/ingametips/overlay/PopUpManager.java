@@ -11,7 +11,7 @@ public class PopUpManager {
 
     private static PopUpManager instance;
     private final Deque<PopUp> queued = Queues.newArrayDeque();
-    private TipAnimation current = null;
+    private PopUpAnimation current = null;
 
     PopUpManager() {
         instance = this;
@@ -30,7 +30,7 @@ public class PopUpManager {
         if(queued.isEmpty()) return null;
         PopUp popUp = queued.peek();
         if(current == null || current.getCurrent() != popUp) {
-            current = new TipAnimation(popUp);
+            current = new PopUpAnimation(popUp);
         } else {
             if(current.isAnimationFinished()) {
                 queued.poll();
@@ -41,7 +41,7 @@ public class PopUpManager {
         return popUp;
     }
 
-    public TipAnimation getAnimation() {
+    public PopUpAnimation getAnimation() {
         return current;
     }
 

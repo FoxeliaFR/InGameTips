@@ -1,10 +1,12 @@
 package fr.foxelia.ingametips.overlay;
 
+import fr.foxelia.ingametips.config.InGameTipsClientConfigs;
 import fr.foxelia.ingametips.tip.PopUp;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.resources.sounds.SimpleSoundInstance;
 import net.minecraft.network.chat.FormattedText;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.FormattedCharSequence;
 
@@ -16,7 +18,6 @@ public class PopUpAnimation {
     private static final int ANIMATION_DURATION = 300;
     private static final int MAX_LINE_WIDTH = 240;
     private static final int OFFSET = 4;
-    private static final int MAX_LINES = 7;
     private final Minecraft mc = Minecraft.getInstance();
     private final PopUp current;
     private final long startEnd;
@@ -24,7 +25,7 @@ public class PopUpAnimation {
     private final int backgroundHeight;
     public long animationStartTime = System.currentTimeMillis(); // A changer (private)
     private long elapsed = 0;
-    private boolean playSound = true;
+    private boolean needSound = true;
     private boolean endSoundPlayed = false;
 
     PopUpAnimation(PopUp popUp) {
@@ -32,8 +33,8 @@ public class PopUpAnimation {
         startEnd = current.displayTime() - ANIMATION_DURATION;
         Font fontRenderer = mc.font;
         lines = new ArrayList<>(fontRenderer.split(FormattedText.of(popUp.message()), MAX_LINE_WIDTH));
-        if(lines.size() > MAX_LINES) {
-            lines.subList(MAX_LINES, lines.size()).clear();
+        if(lines.size() > InGameTipsClientConfigs.maxLines.get()) {
+            lines.subList(InGameTipsClientConfigs.maxLines.get(), lines.size()).clear();
         }
         backgroundHeight = popUp.getBackgroundHeight(lines.size());
     }
@@ -42,7 +43,7 @@ public class PopUpAnimation {
         elapsed = System.currentTimeMillis() - this.animationStartTime;
 
         if(elapsed > startEnd) {
-            if(!endSoundPlayed) playSound = true;
+            if(!endSoundPlayed) needSound = true;
             return Math.min((float) (current.displayTime() - elapsed) / ANIMATION_DURATION, 1.0f);
         } else if (elapsed > ANIMATION_DURATION) {
             return 1.0f;
@@ -62,16 +63,18 @@ public class PopUpAnimation {
         return current;
     }
 
-    public void playSound() {
-        if(playSound) {
+    public void verifySoundEvent() {
+        if(needSound) {
             if(elapsed > startEnd) {
-                mc.getSoundManager().play(SimpleSoundInstance.forUI(SoundEvents.UI_TOAST_OUT, 1.0F, 1.0F));
+                playUISound(SoundEvents.UI_TOAST_OUT);
                 endSoundPlayed = true;
-            } else {
-                mc.getSoundManager().play(SimpleSoundInstance.forUI(SoundEvents.UI_TOAST_IN, 1.0F, 1.0F));
-            }
-            playSound = false;
+            } else playUISound(SoundEvents.UI_TOAST_IN);
+            needSound = false;
         }
+    }
+
+    public void playUISound(SoundEvent sound) {
+        if(InGameTipsClientConfigs.enableSound.get()) mc.getSoundManager().play(SimpleSoundInstance.forUI(sound, 1.0F, 1.0F));
     }
 
     public boolean isAnimationFinished() {

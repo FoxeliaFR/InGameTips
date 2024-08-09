@@ -25,7 +25,7 @@ public class PopUpOverlay implements IGuiOverlay {
         int popUpStart = (screenWidth - 256) / 2;
         int y = animation.getY();
 
-        manager.getAnimation().playSound();
+        manager.getAnimation().verifySoundEvent();
 
         // Top texture with the title
         guiGraphics.blit(popUp.getBackground(), popUpStart, y, 0, PopUp.TexturePart.TOP.offset(), 256, PopUp.TexturePart.TOP.height());

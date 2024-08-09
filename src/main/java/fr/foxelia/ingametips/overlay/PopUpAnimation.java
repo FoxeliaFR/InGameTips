@@ -82,10 +82,6 @@ public class PopUpAnimation {
         return lines;
     }
 
-    public int getBackgroundHeight() {
-        return backgroundHeight;
-    }
-
 
 
 }

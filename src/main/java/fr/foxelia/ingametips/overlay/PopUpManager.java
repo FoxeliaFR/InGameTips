@@ -22,7 +22,7 @@ public class PopUpManager {
     }
 
     public void queue(PopUp popUp) {
-        if(InGameTipsClientConfigs.enableTips.get().booleanValue()) queued.add(popUp);
+        if(InGameTipsClientConfigs.enableTips.get()) queued.add(popUp);
     }
 
     @Nullable

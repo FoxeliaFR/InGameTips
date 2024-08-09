@@ -2,21 +2,30 @@ package fr.foxelia.ingametips.tip;
 
 public record PopUp(String message, int displayTime) implements ITip {
 
-    public int getBlitOffset(int lines) {
-        return switch (lines) {
-            case 1, 2 -> 0;
-            case 3, 4 -> 32;
-            case 5, 6 -> 80;
-            default -> 144;
-        };
+    public int getBackgroundHeight(int numLines) {
+        return TexturePart.TOP.height() + TexturePart.MIDDLE.height() * (numLines - 1) + TexturePart.BOTTOM.height();
     }
 
-    public int getBackgroundHeight(int lines) {
-        return switch (lines) {
-            case 1, 2 -> 32;
-            case 3, 4 -> 48;
-            case 5, 6 -> 64;
-            default -> 96;
-        };
+    public enum TexturePart {
+        TOP(0, 16),
+        MIDDLE(16, 16),
+        BOTTOM(32, 16);
+
+        private final int offset;
+        private final int height;
+
+        TexturePart(int offset, int height) {
+            this.offset = offset;
+            this.height = height;
+        }
+
+        public int offset() {
+            return offset;
+        }
+
+        public int height() {
+            return height;
+        }
     }
+
 }

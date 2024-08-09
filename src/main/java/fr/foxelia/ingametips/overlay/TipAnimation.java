@@ -21,9 +21,7 @@ public class TipAnimation {
     private final PopUp current;
     private final long startEnd;
     private final List<FormattedCharSequence> lines;
-    private final int numLines;
     private final int backgroundHeight;
-    private final int blitOffset;
     public long animationStartTime = System.currentTimeMillis(); // A changer (private)
     private long elapsed = 0;
     private boolean playSound = true;
@@ -37,9 +35,7 @@ public class TipAnimation {
         if(lines.size() > MAX_LINES) {
             lines.subList(MAX_LINES, lines.size()).clear();
         }
-        numLines = lines.size();
-        backgroundHeight = popUp.getBackgroundHeight(numLines);
-        blitOffset = popUp.getBlitOffset(numLines);
+        backgroundHeight = popUp.getBackgroundHeight(lines.size());
     }
 
     private float getAnimationProgress() {
@@ -58,7 +54,7 @@ public class TipAnimation {
     public int getY() {
         float progress = getAnimationProgress();
         if(progress == 1.0f) return OFFSET;
-        int startY = -current.getBackgroundHeight(numLines);
+        int startY = -backgroundHeight;
         return startY + (int) ((OFFSET - startY) * progress);
     }
 
@@ -88,10 +84,6 @@ public class TipAnimation {
 
     public int getBackgroundHeight() {
         return backgroundHeight;
-    }
-
-    public int getBlitOffset() {
-        return blitOffset;
     }
 
 

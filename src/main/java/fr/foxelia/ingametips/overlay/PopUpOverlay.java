@@ -27,14 +27,19 @@ public class PopUpOverlay implements IGuiOverlay {
 
         manager.getAnimation().playSound();
 
-        // Draw background
-        guiGraphics.blit(popUp.getBackground(), popUpStart, y, 0, animation.getBlitOffset(), 256, animation.getBackgroundHeight());
-
-        // Draw text
-        y += 3;
+        // Top texture with the title
+        guiGraphics.blit(popUp.getBackground(), popUpStart, y, 0, PopUp.TexturePart.TOP.offset(), 256, PopUp.TexturePart.TOP.height());
+        y += 4;
         guiGraphics.drawCenteredString(mc.font, I18n.get("tip.igtips.name"), screenWidth / 2, y, 0xFFFFFF);
+
+        // Middle and bottom textures with the message
+        FormattedCharSequence lastLine = animation.getLines().get(animation.getLines().size() - 1);
         for (FormattedCharSequence line : animation.getLines()) {
-            y += mc.font.lineHeight + 2;
+            y += mc.font.lineHeight;
+            if(line.equals(lastLine)) {
+                guiGraphics.blit(popUp.getBackground(), popUpStart, y, 0, PopUp.TexturePart.BOTTOM.offset(), 256, PopUp.TexturePart.BOTTOM.height());
+            } else guiGraphics.blit(popUp.getBackground(), popUpStart, y, 0, PopUp.TexturePart.MIDDLE.offset(), 256, PopUp.TexturePart.MIDDLE.height());
+            y += 2;
             guiGraphics.drawString(mc.font, line, popUpStart + 5, y, 0xFFFFFF);
         }
     }

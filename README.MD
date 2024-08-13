@@ -93,6 +93,7 @@ You can join the [Zarinoow Development Discord](https://discord.gg/Ny28nkh4Fj) f
 - Custom API to trigger tips on specific events
 - Skip tips with a key
 - Elapsed time bar
+- Spigot version
 
 # Server, Modpack and Mod who use InGameTips :
 - None

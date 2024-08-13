@@ -72,16 +72,16 @@ Like a server owner, you can create a data pack with the tips you want to add. Y
 To embed tips in your mod you don't need to depend on any mod. You simply need to add some files to your assets folder. For detailed steps, you can check the [wiki]().
 
 ## I have a problem with the mod, how can I report it ?
-To report a problem with the mod, you can create an issue on the [GitHub repository](/issues). Please provide as much information as possible to help me understand the problem.
+To report a problem with the mod, you can create an issue on the [GitHub repository](https://github.com/FoxeliaFR/InGameTips/issues). Please provide as much information as possible to help me understand the problem.
 
 ## I have an idea for the mod, how can I suggest it ?
-To suggest an idea for the mod, you can create an issue on the [GitHub repository](/issues). Please provide as much information as possible to help me understand the idea.
+To suggest an idea for the mod, you can create an issue on the [GitHub repository](https://github.com/FoxeliaFR/InGameTips/issues). Please provide as much information as possible to help me understand the idea.
 
 ## Can you backport the mod to an older version ?
 I don't plan to backport the mod to legacy minecraft versions. As the mod is datapack based, backporting the mod would be very difficult and time consuming. However, you can create a pull request to backport the mod to an older version, but I will not provide any support or updates for it.
 
 ## When do you plan to release the next version ?
-I don't have a specific release date for the next version. I work on the mod in my free time and I don't have a specific schedule. However, you can check the [GitHub repository](/releases) to see the latest releases.
+I don't have a specific release date for the next version. I work on the mod in my free time and I don't have a specific schedule. However, you can check the [GitHub repository](https://github.com/FoxeliaFR/InGameTips/releases) to see the latest releases.
 
 ## I need help with the mod, how can I get help ?
 You can join the [Zarinoow Development Discord](https://discord.gg/Ny28nkh4Fj) for international support. You can also join the [Foxelia Development Discord](https://discord.foxelia.fr/) for french support and follow our other projects.

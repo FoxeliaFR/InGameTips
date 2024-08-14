@@ -63,13 +63,13 @@ Yes, you can use this mod in your modpack unless you respect the [terms of use](
 ## How can I add tips to my modpack ?
 
 ### I'am a server owner :
-Create a data pack with the tips you want to add. After that, you just need to drop the data pack in the `datapacks` folder of your server (Usually located in the main world folder). For detailed steps, you can check the [wiki]().
+Create a data pack with the tips you want to add. After that, you just need to drop the data pack in the `datapacks` folder of your server (Usually located in the main world folder). For detailed steps, you can check the [wiki](https://github.com/FoxeliaFR/InGameTips/wiki/Server).
 
 ### I'am a modpack creator :
-Like a server owner, you can create a data pack with the tips you want to add. You can also include tips by adding a mod that supports the tips system. For detailed steps to create a data pack, you can check the [wiki]().
+Like a server owner, you can create a data pack with the tips you want to add. You can also include tips by adding a mod that supports the tips system. For detailed steps to create a data pack, you can check the [wiki](https://github.com/FoxeliaFR/InGameTips/wiki/Modpack).
 
 ### I'am a mod maker :
-To embed tips in your mod you don't need to depend on any mod. You simply need to add some files to your assets folder. For detailed steps, you can check the [wiki]().
+To embed tips in your mod you don't need to depend on any mod. You simply need to add some files to your assets folder. For detailed steps, you can check the [wiki](https://github.com/FoxeliaFR/InGameTips/wiki/Mod).
 
 ## I have a problem with the mod, how can I report it ?
 To report a problem with the mod, you can create an issue on the [GitHub repository](https://github.com/FoxeliaFR/InGameTips/issues). Please provide as much information as possible to help me understand the problem.

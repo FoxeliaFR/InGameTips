@@ -17,7 +17,7 @@ InGameTips is a vanilla friendly mod that allows you to display tips directly in
 
 
 <p align="center">
-  <img src="images/tip_notif.png" alt="ProceduralDungeon Dungeon">
+  <img src="images/tip_notif.png" alt="InGameTips Popup Notification">
 </p>
 
 # Features :

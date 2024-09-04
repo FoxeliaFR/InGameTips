@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/FoxeliaFR/InGameTips">
-    <img src="src/main/resources/logo.png" alt="InGameTips Logo" height="256">
+    <img src="old/src/main/resources/logo.png" alt="InGameTips Logo" height="256">
   </a>
   <br/>
   <sub>Logo Made By <a href="https://github.com/Zarinoow">Zarinoow</a></sub>
@@ -40,8 +40,8 @@ InGameTips is a vanilla friendly mod that allows you to display tips directly in
 
 | Minecraft Version | Forge   | Fabric | 🦊 Neo Forge | Quilt | Other |
 |-------------------|---------| --- |--------------| --- |-------|
-| 1.21              | ❌      | ❌ | ❌           | ❌ | 🔴    |
-| 1.20.2 - 1.20.4   | ❌ | ❌ | ❌ | ❌ | 🔴     |
+| 1.21              | 🔴      | ❌ | ❌           | ❌ | 🔴    |
+| 1.20.2 - 1.20.4   | 🔴 | ❌ | ❌ | ❌ | 🔴     |
 | 1.20.1            | ✅ 1.0.0 | ❌ | 🤔 1.0.0     | ❌ | 🔴     |
 | 1.20              | ❌| ❌ | 🔴    | ❌ | 🔴     |
 | 1.19 - 1.19.4     | ❌ | ❌ | 🔴 | ❌ | 🔴     |

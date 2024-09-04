@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "${mod_id}",
+  "version": "${version}",
+  "name": "${mod_name}",
+  "description": "${mod_description}",
+  "authors": [
+    "${mod_authors}"
+  ],
+  "contact": {
+    "homepage": "${website}",
+    "sources": "${github}",
+    "issues": "${issue_tracker}",
+    "support": "${discord}",
+    "modrinth": "${modrinth}"
+  },
+  "license": "${mod_license}",
+  "icon": "logo.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "fr.foxelia.igtips.fabric.ExampleModFabric"
+    ],
+    "client": [
+      "fr.foxelia.igtips.fabric.client.ExampleModFabricClient"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=${depend_fabric}",
+    "minecraft": "~${minecraft_version}",
+    "java": ">=17",
+    "architectury": ">=${depend_architectury}",
+    "fabric-api": "*",
+    "forgeconfigapiport": ">=${depend_fuzs_config}"
+  }
+}

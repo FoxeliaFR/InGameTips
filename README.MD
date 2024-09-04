@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/FoxeliaFR/InGameTips">
-    <img src="old/src/main/resources/logo.png" alt="InGameTips Logo" height="256">
+    <img src="common/src/main/resources/logo.png" alt="InGameTips Logo" height="256">
   </a>
   <br/>
   <sub>Logo Made By <a href="https://github.com/Zarinoow">Zarinoow</a></sub>

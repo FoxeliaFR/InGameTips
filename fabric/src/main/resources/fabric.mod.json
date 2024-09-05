@@ -10,20 +10,26 @@
   "contact": {
     "homepage": "${website}",
     "sources": "${github}",
-    "issues": "${issue_tracker}",
-    "support": "${discord}",
-    "modrinth": "${modrinth}"
+    "issues": "${issue_tracker}"
   },
   "license": "${mod_license}",
   "icon": "logo.png",
   "environment": "*",
   "entrypoints": {
     "main": [
-      "fr.foxelia.igtips.fabric.ExampleModFabric"
+      "fr.foxelia.igtips.fabric.InGameTipsFabric"
     ],
     "client": [
-      "fr.foxelia.igtips.fabric.client.ExampleModFabricClient"
+      "fr.foxelia.igtips.fabric.client.InGameTipsFabricClient"
     ]
+  },
+  "custom": {
+    "modmenu": {
+      "links": {
+        "modmenu.discord": "${discord}",
+        "modmenu.modrinth": "${modrinth}"
+      }
+    }
   },
   "depends": {
     "fabricloader": ">=${depend_fabric}",

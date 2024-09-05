@@ -1,17 +1,16 @@
-package fr.foxelia.igtips.forge.config;
+package fr.foxelia.igtips.forge.event;
 
 import fr.foxelia.igtips.InGameTips;
+import fr.foxelia.igtips.config.ConfigUpdateHandler;
 import fr.foxelia.igtips.schedule.ScheduleManager;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.event.config.ModConfigEvent;
 
-public class ConfigUpdateHandler {
+public class ModConfigReloadingEventHandler {
 
     @SubscribeEvent
     public static void onConfigChanged(ModConfigEvent.Reloading event) {
-        if (event.getConfig().getFileName().equals(InGameTips.MOD_ID + "-common.toml")) {
-            if (InGameTips.SERVER != null) ScheduleManager.INSTANCE.refresh();
-        }
+        ConfigUpdateHandler.configChanged(event.getConfig());
     }
 
 }

@@ -1,8 +1,10 @@
 package fr.foxelia.igtips.fabric;
 
 import fr.foxelia.igtips.InGameTips;
+import fr.foxelia.igtips.config.ConfigUpdateHandler;
 import fr.foxelia.igtips.config.InGameTipsCommonConfigs;
 import fuzs.forgeconfigapiport.api.config.v2.ForgeConfigRegistry;
+import fuzs.forgeconfigapiport.api.config.v2.ModConfigEvents;
 import net.fabricmc.api.ModInitializer;
 import net.minecraftforge.fml.config.ModConfig;
 
@@ -13,7 +15,6 @@ public final class InGameTipsFabric implements ModInitializer {
     /*
      * TODO:
      *  - DatapackLoader
-     *  - ConfigUpdateHandler
      *  - PlayerLanguageHelper
      */
 
@@ -28,6 +29,9 @@ public final class InGameTipsFabric implements ModInitializer {
 
         // Register the common config
         ForgeConfigRegistry.INSTANCE.register(MOD_ID, ModConfig.Type.COMMON, InGameTipsCommonConfigs.COMMON_CONFIG, MOD_ID + "-common.toml");
+
+        // Event registration
+        ModConfigEvents.reloading(MOD_ID).register(ConfigUpdateHandler::configChanged);
 
     }
 }

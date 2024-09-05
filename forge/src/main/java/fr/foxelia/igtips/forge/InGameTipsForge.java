@@ -4,7 +4,7 @@ import dev.architectury.platform.forge.EventBuses;
 import fr.foxelia.igtips.InGameTips;
 import fr.foxelia.igtips.client.config.InGameTipsClientConfigs;
 import fr.foxelia.igtips.config.InGameTipsCommonConfigs;
-import fr.foxelia.igtips.forge.config.ConfigUpdateHandler;
+import fr.foxelia.igtips.forge.event.ModConfigReloadingEventHandler;
 import fr.foxelia.igtips.forge.datapack.DatapackLoader;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -31,7 +31,7 @@ public final class InGameTipsForge {
         // Register ourselves for server and other game events we are interested in
         IEventBus eventBus = MinecraftForge.EVENT_BUS;
         eventBus.addListener(DatapackLoader::onAddReloadListener);
-        eventBus.addListener(ConfigUpdateHandler::onConfigChanged);
+        eventBus.addListener(ModConfigReloadingEventHandler::onConfigChanged);
     }
 
 }

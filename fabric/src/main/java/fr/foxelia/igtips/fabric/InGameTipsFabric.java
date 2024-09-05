@@ -3,9 +3,13 @@ package fr.foxelia.igtips.fabric;
 import fr.foxelia.igtips.InGameTips;
 import fr.foxelia.igtips.config.ConfigUpdateHandler;
 import fr.foxelia.igtips.config.InGameTipsCommonConfigs;
+import fr.foxelia.igtips.datapack.TipLoader;
+import fr.foxelia.igtips.fabric.datapack.DatapackLoader;
 import fuzs.forgeconfigapiport.api.config.v2.ForgeConfigRegistry;
 import fuzs.forgeconfigapiport.api.config.v2.ModConfigEvents;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
+import net.minecraft.resource.ResourceType;
 import net.minecraftforge.fml.config.ModConfig;
 
 import static fr.foxelia.igtips.InGameTips.MOD_ID;
@@ -31,6 +35,7 @@ public final class InGameTipsFabric implements ModInitializer {
         ForgeConfigRegistry.INSTANCE.register(MOD_ID, ModConfig.Type.COMMON, InGameTipsCommonConfigs.COMMON_CONFIG, MOD_ID + "-common.toml");
 
         // Event registration
+        ResourceManagerHelper.get(ResourceType.SERVER_DATA).registerReloadListener(new DatapackLoader());
         ModConfigEvents.reloading(MOD_ID).register(ConfigUpdateHandler::configChanged);
 
     }

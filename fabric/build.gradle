@@ -40,6 +40,9 @@ dependencies {
     // Architectury API. This is optional, and you can comment it out if you don't need it.
     modImplementation "dev.architectury:architectury-fabric:$rootProject.architectury_api_version"
 
+    // Fuzs Config API. This mod is needed for the config system.
+    modApi "fuzs.forgeconfigapiport:forgeconfigapiport-fabric:$fuzs_config_api_version"
+
     // ModMenu. This is optional, and you can comment it out if you don't need it.
     modRuntimeOnly "com.terraformersmc:modmenu:7.2.2"
 

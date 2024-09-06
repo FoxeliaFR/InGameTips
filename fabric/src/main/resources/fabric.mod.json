@@ -31,6 +31,9 @@
       }
     }
   },
+  "mixins": [
+    "fabric.mixins.json"
+  ],
   "depends": {
     "fabricloader": ">=${depend_fabric}",
     "minecraft": "~${minecraft_version}",

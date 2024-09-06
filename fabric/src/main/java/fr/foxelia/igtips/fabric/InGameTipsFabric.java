@@ -5,6 +5,7 @@ import fr.foxelia.igtips.config.ConfigUpdateHandler;
 import fr.foxelia.igtips.config.InGameTipsCommonConfigs;
 import fr.foxelia.igtips.datapack.TipLoader;
 import fr.foxelia.igtips.fabric.datapack.DatapackLoader;
+import fr.foxelia.igtips.network.fabric.PlayerLanguagePacket;
 import fuzs.forgeconfigapiport.api.config.v2.ForgeConfigRegistry;
 import fuzs.forgeconfigapiport.api.config.v2.ModConfigEvents;
 import net.fabricmc.api.ModInitializer;
@@ -18,7 +19,6 @@ public final class InGameTipsFabric implements ModInitializer {
 
     /*
      * TODO:
-     *  - DatapackLoader
      *  - PlayerLanguageHelper
      */
 
@@ -30,6 +30,9 @@ public final class InGameTipsFabric implements ModInitializer {
 
         // Run our common setup.
         InGameTips.init();
+
+        // Register language packet
+        PlayerLanguagePacket.registerServerPacketHandler();
 
         // Register the common config
         ForgeConfigRegistry.INSTANCE.register(MOD_ID, ModConfig.Type.COMMON, InGameTipsCommonConfigs.COMMON_CONFIG, MOD_ID + "-common.toml");

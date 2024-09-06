@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "package": "fr.foxelia.igtips.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "fabric.LanguageChangeMixin",
+    "fabric.PlayerLanguageAccessor",
+    "fabric.PlayerLanguageMixin"
+  ],
+  "client": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

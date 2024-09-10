@@ -21,7 +21,7 @@ public class InGameTipsCommonConfigs {
         COMMON_BUILDER.push("Common configuration settings for InGameTips");
 
         scheduleTime = COMMON_BUILDER.comment("The time in seconds between each tip. Set to 0 to disable scheduled tips.\nExample: 60 (1 minute), 90 (1 minute 30 seconds), 300 (5 minutes)")
-                .defineInRange("scheduleTime", 300, 0, Integer.MAX_VALUE);
+                .defineInRange("scheduleTime", 900, 0, Integer.MAX_VALUE);
         disabledNamespaces = COMMON_BUILDER.comment("List of mod namespaces to disable tips from.\nExample: [\"modid\", \"datapackid\"]")
                 .defineList("disabledNamespaces", new ArrayList<>(), obj -> obj instanceof String);
         tipRecyling = COMMON_BUILDER.comment("If enabled, tips will be recycled when all tips have been sent.")

@@ -3,7 +3,7 @@ package fr.foxelia.igtips.datapack;
 import java.util.Map;
 
 public class TipData {
-    private final int displayTime = -1;
+    private int displayTime = -1;
     private Map<String, String> translations;
 
     public int getDisplayTime() {

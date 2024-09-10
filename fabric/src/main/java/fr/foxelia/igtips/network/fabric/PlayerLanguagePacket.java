@@ -1,7 +1,7 @@
 package fr.foxelia.igtips.network.fabric;
 
 import fr.foxelia.igtips.InGameTips;
-import fr.foxelia.igtips.mixin.fabric.PlayerLanguageAccessor;
+import fr.foxelia.igtips.accessor.fabric.PlayerLanguageAccessor;
 import io.netty.buffer.Unpooled;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.networking.v1.PacketSender;
@@ -20,16 +20,16 @@ public class PlayerLanguagePacket {
         ServerPlayNetworking.registerGlobalReceiver(LANGUAGE_PACKET_ID, PlayerLanguagePacket::handle);
     }
 
-    public static void sendLanguageToServer(String languageCode, ClientPlayNetworking networking) {
+    public static void sendLanguageToServer(String languageCode) {
         PacketByteBuf buf = new PacketByteBuf(Unpooled.buffer());
         buf.writeString(languageCode);
-        networking.send(LANGUAGE_PACKET_ID, buf);
-
+        ClientPlayNetworking.send(LANGUAGE_PACKET_ID, buf);
     }
 
     protected static void handle(MinecraftServer server, ServerPlayerEntity player, ServerPlayNetworkHandler ctx, PacketByteBuf buf, PacketSender sender) {
         String language = buf.readString();
-        ((PlayerLanguageAccessor) player).setLanguage(language);
+        PlayerLanguageAccessor playerLanguageAccessor = (PlayerLanguageAccessor) player;
+        playerLanguageAccessor.setLanguage(language);
     }
 
 

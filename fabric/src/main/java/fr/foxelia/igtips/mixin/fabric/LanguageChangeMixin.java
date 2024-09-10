@@ -3,6 +3,7 @@ package fr.foxelia.igtips.mixin.fabric;
 import fr.foxelia.igtips.network.fabric.PlayerLanguagePacket;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.resource.language.I18n;
+import net.minecraft.client.resource.language.LanguageManager;
 import net.minecraft.util.Language;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -17,12 +18,12 @@ public class LanguageChangeMixin {
         // Envoyer un paquet au serveur avec la nouvelle langue du joueur
         MinecraftClient client = MinecraftClient.getInstance();
 
-        System.out.println(language); // Debug
-        System.out.println(ci); // Debug
         if (client.getNetworkHandler() != null) {
             // Créer et envoyer un paquet pour notifier le serveur
+            String languageCode = client.getLanguageManager().getLanguage();
 
-            //PlayerLanguagePacket.sendLanguageToServer();
+            // Envoi du paquet
+            PlayerLanguagePacket.sendLanguageToServer(languageCode);
         }
     }
 }

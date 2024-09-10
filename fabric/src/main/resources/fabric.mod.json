@@ -13,7 +13,7 @@
     "issues": "${issue_tracker}"
   },
   "license": "${mod_license}",
-  "icon": "logo.png",
+  "icon": "${mod_logo}",
   "environment": "*",
   "entrypoints": {
     "main": [

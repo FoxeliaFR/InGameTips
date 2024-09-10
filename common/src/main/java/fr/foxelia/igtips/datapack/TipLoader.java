@@ -48,6 +48,6 @@ public class TipLoader extends JsonDataLoader {
                 InGameTips.LOGGER.error("Error parsing JSON for tip {}: {}", entry.getKey(), e.getMessage());
             }
         }
-        InGameTips.LOGGER.info("Initialized {} tips.", tipCount);
+        InGameTips.LOGGER.info("Loaded {} tips", tipCount);
     }
 }

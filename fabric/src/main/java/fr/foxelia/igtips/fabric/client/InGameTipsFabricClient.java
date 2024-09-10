@@ -15,8 +15,6 @@ public final class InGameTipsFabricClient implements ClientModInitializer {
         ForgeConfigRegistry.INSTANCE.register(InGameTips.MOD_ID, ModConfig.Type.CLIENT, InGameTipsClientConfigs.CLIENT_CONFIG, InGameTips.MOD_ID + "-client.toml");
 
         // Update the player's language when they join the server
-        ClientPlayConnectionEvents.JOIN.register((handler, sender, client) -> {
-            PlayerLanguagePacket.sendLanguageToServer(client.getLanguageManager().getLanguage());
-        });
+        ClientPlayConnectionEvents.JOIN.register((handler, sender, client) -> PlayerLanguagePacket.sendLanguageToServer(client.getLanguageManager().getLanguage()));
     }
 }

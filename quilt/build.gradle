@@ -4,6 +4,10 @@ plugins {
 
 repositories {
     maven { url 'https://maven.quiltmc.org/repository/release/' }
+    maven {
+        name = "Terraformers"
+        url = "https://maven.terraformersmc.com/"
+    }
 }
 
 architectury {
@@ -31,6 +35,11 @@ configurations {
 dependencies {
     modImplementation "org.quiltmc:quilt-loader:$rootProject.quilt_loader_version"
 
+    modRuntimeOnly("com.terraformersmc:modmenu:7.2.2") {
+        exclude group: 'net.fabricmc.fabric-api'
+        exclude group: 'net.fabricmc'
+    }
+
     // Quilt Standard Libraries and QSL.
     modImplementation "org.quiltmc.quilted-fabric-api:quilted-fabric-api:$rootProject.quilted_fabric_api_version"
 
@@ -41,17 +50,30 @@ dependencies {
         exclude group: 'net.fabricmc.fabric-api'
     }
 
+    // Fuzs Config API. REMOVE IT BEFORE PROD !
+    /*modApi "fuzs.forgeconfigapiport:forgeconfigapiport-fabric:$fuzs_config_api_version"*/
+
+
     common(project(path: ':common', configuration: 'namedElements')) { transitive false }
     shadowBundle project(path: ':common', configuration: 'transformProductionQuilt')
 }
 
 processResources {
-    inputs.property 'group', project.group
-    inputs.property 'version', project.version
+
+    var replaceProperties = [
+            minecraft_version: minecraft_version, forge_version: forge_version, mod_id: archives_name,
+            mod_name: mod_name, mod_logo: mod_logo, mod_license: mod_license, mod_version: mod_version,
+            mod_author: mod_author, mod_authors: "${mod_author}, ${mod_contributors}", mod_contributors: mod_contributors,
+            mod_description: mod_description, version: project.version, group: project.group,
+            modrinth: modrinth, discord: discord, website: website, github: github, issue_tracker: issue_tracker,
+            depend_architectury: architectury_api_version, depend_fabric: fabric_loader_version, depend_fuzs_config: fuzs_config_api_version
+    ]
+    inputs.properties replaceProperties
 
     filesMatching('quilt.mod.json') {
-        expand group: project.group, version: project.version
+        expand replaceProperties + [project: project]
     }
+
 }
 
 shadowJar {

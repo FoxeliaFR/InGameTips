@@ -2,20 +2,26 @@
   "schema_version": 1,
   "quilt_loader": {
     "group": "${group}",
-    "id": "igtips",
+    "id": "${mod_id}",
     "version": "${version}",
     "metadata": {
-      "name": "InGameTips",
-      "description": "This is an example description! Tell everyone what your mod is about!",
+      "name": "${mod_name}",
+      "description": "${mod_description}",
       "contributors": {
-        "Me!": "Author"
+        "${mod_author}": "${mod_contributors}"
       },
-      "icon": "assets/igtips/icon.png"
+      "contact": {
+        "homepage": "${website}",
+        "sources": "${github}",
+        "issues": "${issue_tracker}"
+      },
+      "license": "${mod_license}",
+      "icon": "${mod_logo}"
     },
     "intermediate_mappings": "net.fabricmc:intermediary",
     "entrypoints": {
       "init": [
-        "fr.foxelia.igtips.quilt.ExampleModQuilt"
+        "fr.foxelia.igtips.quilt.InGameTipsQuilt"
       ]
     },
     "depends": [
@@ -37,7 +43,10 @@
       }
     ]
   },
-  "mixin": [
-    "igtips.mixins.json"
-  ]
+  "modmenu": {
+    "links": {
+      "modmenu.discord": "${discord}",
+      "modmenu.modrinth": "${modrinth}"
+    }
+  }
 }

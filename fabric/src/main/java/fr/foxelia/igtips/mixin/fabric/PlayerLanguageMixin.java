@@ -1,6 +1,6 @@
 package fr.foxelia.igtips.mixin.fabric;
 
-import fr.foxelia.igtips.accessor.fabric.PlayerLanguageAccessor;
+import fr.foxelia.igtips.accessor.PlayerLanguageAccessor;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;

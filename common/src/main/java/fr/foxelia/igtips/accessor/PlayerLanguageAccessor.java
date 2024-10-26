@@ -1,4 +1,4 @@
-package fr.foxelia.igtips.accessor.fabric;
+package fr.foxelia.igtips.accessor;
 
 public interface PlayerLanguageAccessor {
 

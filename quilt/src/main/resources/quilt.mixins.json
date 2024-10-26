@@ -3,8 +3,8 @@
   "package": "fr.foxelia.igtips.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "fabric.LanguageChangeMixin",
-    "fr.foxelia.igtips.network.fabric.PlayerLanguageMixin"
+    "quilt.LanguageChangeMixin",
+    "quilt.PlayerLanguageMixin"
   ],
   "client": [],
   "injectors": {

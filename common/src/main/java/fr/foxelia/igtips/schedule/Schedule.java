@@ -1,11 +1,11 @@
 package fr.foxelia.igtips.schedule;
 
-import fr.foxelia.igtips.config.InGameTipsCommonConfigs;
+import fr.foxelia.igtips.config.CommonConfig;
 import fr.foxelia.igtips.data.TipHistory;
 import fr.foxelia.igtips.datapack.TipRegistry;
-import fr.foxelia.igtips.platform.PlayerLanguageHelper;
 import fr.foxelia.igtips.network.NetworkHandler;
 import fr.foxelia.igtips.network.TipPacket;
+import fr.foxelia.igtips.platform.PlayerLanguageHelper;
 import fr.foxelia.igtips.tip.TranslatableTip;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Identifier;
@@ -45,7 +45,7 @@ public abstract class Schedule {
         Set<Identifier> availableTips = new HashSet<>(TipRegistry.getAllTips().keySet());
         availableTips.removeAll(getTipHistory().getViewedTips());
         if(availableTips.isEmpty()) {
-            if(InGameTipsCommonConfigs.tipRecyling.get()) {
+            if(CommonConfig.isRecyclingTips()) {
                 if(!TipRegistry.getAllTips().keySet().isEmpty()) {
                     getTipHistory().getViewedTips().clear();
                     return getRandTip();
@@ -80,7 +80,7 @@ public abstract class Schedule {
     }
 
     public void updateExecutionTick() {
-        executionTick = InGameTipsCommonConfigs.scheduleTime.get() * 20;
+        executionTick = CommonConfig.getScheduleInterval() * 20;
     }
 
     protected abstract void execute();

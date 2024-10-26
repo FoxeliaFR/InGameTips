@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonSyntaxException;
 import fr.foxelia.igtips.InGameTips;
-import fr.foxelia.igtips.config.InGameTipsCommonConfigs;
+import fr.foxelia.igtips.config.CommonConfig;
 import fr.foxelia.igtips.tip.TranslatableTip;
 import net.minecraft.resource.JsonDataLoader;
 import net.minecraft.resource.ResourceManager;
@@ -25,7 +25,7 @@ public class TipLoader extends JsonDataLoader {
         int tipCount = 0;
         TipRegistry.reset();
         for (Map.Entry<Identifier, JsonElement> entry : objectIn.entrySet()) {
-            if(InGameTipsCommonConfigs.disabledNamespaces.get().contains(entry.getKey().getNamespace())) {
+            if(CommonConfig.getDisabledNamespaces().contains(entry.getKey().getNamespace())) {
                 continue;
             }
             try {

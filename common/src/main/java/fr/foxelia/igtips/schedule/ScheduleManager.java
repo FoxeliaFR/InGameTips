@@ -1,7 +1,7 @@
 package fr.foxelia.igtips.schedule;
 
 import fr.foxelia.igtips.InGameTips;
-import fr.foxelia.igtips.config.InGameTipsCommonConfigs;
+import fr.foxelia.igtips.config.CommonConfig;
 import net.minecraft.server.network.ServerPlayerEntity;
 import org.jetbrains.annotations.Nullable;
 
@@ -18,9 +18,9 @@ public class ScheduleManager {
     private final Map<String, Schedule> schedules = new HashMap<>();
 
     public void connect(ServerPlayerEntity player) {
-        if(InGameTipsCommonConfigs.scheduleTime.get() == 0) return;
-        if(InGameTipsCommonConfigs.syncSendings.get()) {
-            if(InGameTipsCommonConfigs.individualTips.get()) {
+        if(CommonConfig.getScheduleInterval() == 0) return;
+        if(CommonConfig.isSyncSending()) {
+            if(CommonConfig.isIndividualTips()) {
                 Schedule copyFrom = getFirstSchedule();
                 PlayerSchedule schedule = createPlayerSchedule(player);
                 if(copyFrom != null) schedule.syncWithSchedule(copyFrom);
@@ -60,12 +60,12 @@ public class ScheduleManager {
     }
 
     public void refresh() {
-        if(InGameTipsCommonConfigs.scheduleTime.get() == 0) {
+        if(CommonConfig.getScheduleInterval() == 0) {
             schedules.clear();
             return;
         }
-        if (InGameTipsCommonConfigs.syncSendings.get()) {
-            if (InGameTipsCommonConfigs.individualTips.get()) {
+        if (CommonConfig.isSyncSending()) {
+            if (CommonConfig.isIndividualTips()) {
                 handleIndividualTips();
             } else {
                 handleCommonSchedule();

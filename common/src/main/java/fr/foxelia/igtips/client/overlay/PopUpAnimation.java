@@ -1,6 +1,6 @@
 package fr.foxelia.igtips.client.overlay;
 
-import fr.foxelia.igtips.client.config.InGameTipsClientConfigs;
+import fr.foxelia.igtips.client.config.ClientConfig;
 import fr.foxelia.igtips.tip.PopUp;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
@@ -33,8 +33,9 @@ public class PopUpAnimation {
         startEnd = current.displayTime() - ANIMATION_DURATION;
         TextRenderer fontRenderer = mc.textRenderer;
         lines = new ArrayList<>(fontRenderer.wrapLines(StringVisitable.plain(popUp.message()), MAX_LINE_WIDTH));
-        if(lines.size() > InGameTipsClientConfigs.maxLines.get()) {
-            lines.subList(InGameTipsClientConfigs.maxLines.get(), lines.size()).clear();
+        int maxLines = ClientConfig.getMaxLines();
+        if(lines.size() > maxLines) {
+            lines.subList(maxLines, lines.size()).clear();
         }
         backgroundHeight = popUp.getBackgroundHeight(lines.size());
     }
@@ -74,7 +75,7 @@ public class PopUpAnimation {
     }
 
     public void playUISound(SoundEvent sound) {
-        if(InGameTipsClientConfigs.enableSound.get()) mc.getSoundManager().play(PositionedSoundInstance.master(sound, 1.0F, 1.0F));
+        if(ClientConfig.isSoundEnabled()) mc.getSoundManager().play(PositionedSoundInstance.master(sound, 1.0F, 1.0F));
     }
 
     public boolean isAnimationFinished() {

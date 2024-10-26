@@ -1,7 +1,7 @@
 package fr.foxelia.igtips.client.overlay;
 
 import com.google.common.collect.Queues;
-import fr.foxelia.igtips.client.config.InGameTipsClientConfigs;
+import fr.foxelia.igtips.client.config.ClientConfig;
 import fr.foxelia.igtips.tip.PopUp;
 import org.jetbrains.annotations.Nullable;
 
@@ -22,7 +22,7 @@ public class PopUpManager {
     }
 
     public void queue(PopUp popUp) {
-        if(InGameTipsClientConfigs.enableTips.get()) queued.add(popUp);
+        if(ClientConfig.isTipsEnabled()) queued.add(popUp);
     }
 
     @Nullable

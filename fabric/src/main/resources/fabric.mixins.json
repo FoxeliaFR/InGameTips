@@ -4,7 +4,7 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "fabric.LanguageChangeMixin",
-    "fr.foxelia.igtips.network.fabric.PlayerLanguageMixin"
+    "fabric.PlayerLanguageMixin"
   ],
   "client": [],
   "injectors": {

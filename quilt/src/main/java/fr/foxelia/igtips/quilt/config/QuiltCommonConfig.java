@@ -17,7 +17,7 @@ public class QuiltCommonConfig extends ReflectiveConfig implements ICommonInGame
     @SerializedName("common")
     private final CommonSection commonSection = new CommonSection();
 
-    private class CommonSection extends Section {
+    private static class CommonSection extends Section {
         @Comment("The time in seconds between each tip. Set to 0 to disable scheduled tips.\nExample: 60 (1 minute), 90 (1 minute 30 seconds), 300 (5 minutes)")
         @IntegerRange(min = 0, max = Integer.MAX_VALUE)
         @SerializedName("schedule_time")
@@ -34,7 +34,7 @@ public class QuiltCommonConfig extends ReflectiveConfig implements ICommonInGame
     @SerializedName("sync_sending")
     private final SyncSection syncSection = new SyncSection();
 
-    private class SyncSection extends Section {
+    private static class SyncSection extends Section {
         @Comment("If enabled, tips will be sent to all players at the same time.")
         @SerializedName("sync_sending")
         private final TrackedValue<Boolean> syncSending = value(CommonConfig.isSyncSending());

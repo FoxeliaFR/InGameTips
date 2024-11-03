@@ -15,7 +15,7 @@ public class QuiltClientConfig extends ReflectiveConfig implements IClientInGame
     @SerializedName("client")
     private final ClientSection clientSection = new ClientSection();
 
-    private class ClientSection extends Section {
+    private static class ClientSection extends Section {
 
         @Comment("Enable or disable the display of tips in-game")
         @SerializedName("enable_tips")

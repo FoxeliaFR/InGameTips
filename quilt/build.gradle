@@ -50,10 +50,6 @@ dependencies {
         exclude group: 'net.fabricmc.fabric-api'
     }
 
-    // Fuzs Config API. REMOVE IT BEFORE PROD !
-    /*modApi "fuzs.forgeconfigapiport:forgeconfigapiport-fabric:$fuzs_config_api_version"*/
-
-
     common(project(path: ':common', configuration: 'namedElements')) { transitive false }
     shadowBundle project(path: ':common', configuration: 'transformProductionQuilt')
 }

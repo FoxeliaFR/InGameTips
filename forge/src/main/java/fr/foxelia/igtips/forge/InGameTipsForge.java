@@ -2,9 +2,7 @@ package fr.foxelia.igtips.forge;
 
 import dev.architectury.platform.forge.EventBuses;
 import fr.foxelia.igtips.InGameTips;
-import fr.foxelia.igtips.forge.datapack.DatapackLoader;
 import fr.foxelia.igtips.forge.event.ModConfigReloadingEventHandler;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -19,13 +17,8 @@ public final class InGameTipsForge {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         EventBuses.registerModEventBus(MOD_ID, modEventBus);
 
-
         // Run our common setup.
         InGameTips.init();
-
-        // Register ourselves for server and other game events we are interested in
-        IEventBus eventBus = MinecraftForge.EVENT_BUS;
-        eventBus.addListener(DatapackLoader::onAddReloadListener);
 
         // Register the mod config reloading event handler.
         modEventBus.addListener(ModConfigReloadingEventHandler::onConfigChanged);

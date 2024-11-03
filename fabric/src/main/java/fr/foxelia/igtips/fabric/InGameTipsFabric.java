@@ -2,21 +2,13 @@ package fr.foxelia.igtips.fabric;
 
 import fr.foxelia.igtips.InGameTips;
 import fr.foxelia.igtips.config.forge.ForgeConfigUpdateHandler;
-import fr.foxelia.igtips.fabric.datapack.DatapackLoader;
 import fr.foxelia.igtips.fabric.network.PlayerLanguagePacket;
 import fuzs.forgeconfigapiport.api.config.v2.ModConfigEvents;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
-import net.minecraft.resource.ResourceType;
 
 import static fr.foxelia.igtips.InGameTips.MOD_ID;
 
 public final class InGameTipsFabric implements ModInitializer {
-
-    /*
-     * TODO:
-     *  - PlayerLanguageHelper
-     */
 
     @Override
     public void onInitialize() {
@@ -31,7 +23,6 @@ public final class InGameTipsFabric implements ModInitializer {
         PlayerLanguagePacket.registerServerPacketHandler();
 
         // Event registration
-        ResourceManagerHelper.get(ResourceType.SERVER_DATA).registerReloadListener(new DatapackLoader());
         ModConfigEvents.reloading(MOD_ID).register(ForgeConfigUpdateHandler::configChanged);
 
     }

@@ -4,6 +4,7 @@ import dev.architectury.platform.Platform;
 import fr.foxelia.igtips.client.config.ClientConfig;
 import fr.foxelia.igtips.client.event.OverlayEventHandler;
 import fr.foxelia.igtips.config.CommonConfig;
+import fr.foxelia.igtips.datapack.DatapackLoader;
 import fr.foxelia.igtips.event.CommandEventHandler;
 import fr.foxelia.igtips.event.ScheduleEventHandler;
 import fr.foxelia.igtips.event.ServerEventHandler;
@@ -26,6 +27,7 @@ public final class InGameTips {
         CommandEventHandler.registerCommands();
         ScheduleEventHandler.register();
         NetworkHandler.registerPackets();
+        DatapackLoader.register();
 
         if(Platform.getEnv().equals(EnvType.CLIENT)) {
             initClient();

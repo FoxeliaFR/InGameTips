@@ -11,13 +11,11 @@ import static fr.foxelia.igtips.InGameTips.MOD_ID;
 public class ConfigSetupHelperImpl {
 
     public static ICommonInGameTipsConfig setupCommonConfig() {
-        QuiltCommonConfig commonConfig = QuiltConfig.create(MOD_ID, MOD_ID + "-common", QuiltCommonConfig.class);
-        return commonConfig;
+        return QuiltConfig.create(MOD_ID, MOD_ID + "-common", QuiltCommonConfig.class);
     }
 
     public static IClientInGameTipsConfig setupClientConfig() {
-        QuiltClientConfig clientConfig = QuiltConfig.create(MOD_ID, MOD_ID + "-client", QuiltClientConfig.class);
-        return clientConfig;
+        return QuiltConfig.create(MOD_ID, MOD_ID + "-client", QuiltClientConfig.class);
     }
 
 }

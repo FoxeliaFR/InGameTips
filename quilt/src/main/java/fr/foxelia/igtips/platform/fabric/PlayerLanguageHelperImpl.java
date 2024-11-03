@@ -1,4 +1,4 @@
-package fr.foxelia.igtips.platform.quilt;
+package fr.foxelia.igtips.platform.fabric;
 
 import fr.foxelia.igtips.accessor.PlayerLanguageAccessor;
 import net.minecraft.server.network.ServerPlayerEntity;

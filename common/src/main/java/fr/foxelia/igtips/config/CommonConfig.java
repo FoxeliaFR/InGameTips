@@ -17,7 +17,7 @@ public class CommonConfig {
         return config.getScheduleInterval();
     }
 
-    public static List<? extends String> getDisabledNamespaces() {
+    public static List<String> getDisabledNamespaces() {
         return config.getDisabledNamespaces();
     }
 
@@ -43,7 +43,7 @@ class DefaultCommonConfig implements ICommonInGameTipsConfig {
     }
 
     @Override
-    public List<? extends String> getDisabledNamespaces() {
+    public List<String> getDisabledNamespaces() {
         return new ArrayList<>();
     }
 

@@ -5,7 +5,7 @@ import java.util.List;
 public interface ICommonInGameTipsConfig {
 
     int getScheduleInterval();
-    List<? extends String> getDisabledNamespaces();
+    List<String> getDisabledNamespaces();
     boolean getSyncSending();
     boolean isIndividualTips();
     boolean isRecyclingTips();

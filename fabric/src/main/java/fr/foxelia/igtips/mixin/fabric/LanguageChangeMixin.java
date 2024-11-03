@@ -1,9 +1,8 @@
 package fr.foxelia.igtips.mixin.fabric;
 
-import fr.foxelia.igtips.network.fabric.PlayerLanguagePacket;
+import fr.foxelia.igtips.fabric.network.PlayerLanguagePacket;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.resource.language.I18n;
-import net.minecraft.client.resource.language.LanguageManager;
 import net.minecraft.util.Language;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;

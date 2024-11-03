@@ -1,4 +1,4 @@
-package fr.foxelia.igtips.client.config.quilt;
+package fr.foxelia.igtips.quilt.client.config;
 
 import fr.foxelia.igtips.client.config.ClientConfig;
 import fr.foxelia.igtips.client.config.IClientInGameTipsConfig;

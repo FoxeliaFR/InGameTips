@@ -1,4 +1,4 @@
-package fr.foxelia.igtips.network.fabric;
+package fr.foxelia.igtips.fabric.network;
 
 import fr.foxelia.igtips.InGameTips;
 import fr.foxelia.igtips.accessor.PlayerLanguageAccessor;

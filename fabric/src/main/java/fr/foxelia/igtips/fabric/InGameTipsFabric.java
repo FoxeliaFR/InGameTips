@@ -3,7 +3,7 @@ package fr.foxelia.igtips.fabric;
 import fr.foxelia.igtips.InGameTips;
 import fr.foxelia.igtips.config.forge.ForgeConfigUpdateHandler;
 import fr.foxelia.igtips.fabric.datapack.DatapackLoader;
-import fr.foxelia.igtips.network.fabric.PlayerLanguagePacket;
+import fr.foxelia.igtips.fabric.network.PlayerLanguagePacket;
 import fuzs.forgeconfigapiport.api.config.v2.ModConfigEvents;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;

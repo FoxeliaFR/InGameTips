@@ -1,6 +1,6 @@
 package fr.foxelia.igtips.fabric.client;
 
-import fr.foxelia.igtips.network.fabric.PlayerLanguagePacket;
+import fr.foxelia.igtips.fabric.network.PlayerLanguagePacket;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents;
 

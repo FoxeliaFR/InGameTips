@@ -17,11 +17,11 @@ public class ForgeClientConfig implements IClientInGameTipsConfig {
         clientBuilder.push("Client configuration settings for InGameTips");
 
         enableTips = clientBuilder.comment("Enable or disable the display of tips in-game")
-                .define("enableTips", ClientConfig.isTipsEnabled());
+                .define("enable_tips", ClientConfig.isTipsEnabled());
         enableSound = clientBuilder.comment("Enable or disable the sound when a tip is displayed")
-                .define("enableSound", ClientConfig.isSoundEnabled());
+                .define("enable_sound", ClientConfig.isSoundEnabled());
         maxLines = clientBuilder.comment("Maximum number of lines displayed in a tip")
-                .defineInRange("maxLines", ClientConfig.getMaxLines(), 1, 64);
+                .defineInRange("max_lines", ClientConfig.getMaxLines(), 1, 64);
 
         clientBuilder.pop();
         clientConfig = clientBuilder.build();

@@ -1,6 +1,6 @@
 package fr.foxelia.igtips.mixin.quilt;
 
-import fr.foxelia.igtips.network.quilt.PlayerLanguagePacket;
+import fr.foxelia.igtips.quilt.network.PlayerLanguagePacket;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.resource.language.I18n;
 import net.minecraft.util.Language;

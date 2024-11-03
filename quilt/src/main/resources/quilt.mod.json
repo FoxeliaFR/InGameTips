@@ -22,6 +22,9 @@
     "entrypoints": {
       "init": [
         "fr.foxelia.igtips.quilt.InGameTipsQuilt"
+      ],
+      "client_init": [
+        "fr.foxelia.igtips.quilt.client.InGameTipsQuiltClient"
       ]
     },
     "depends": [

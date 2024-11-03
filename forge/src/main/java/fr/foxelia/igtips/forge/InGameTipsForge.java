@@ -13,9 +13,12 @@ import static fr.foxelia.igtips.InGameTips.MOD_ID;
 
 @Mod(MOD_ID)
 public final class InGameTipsForge {
+
     public InGameTipsForge() {
         // Submit our event bus to let Architectury API register our content on the right time.
-        EventBuses.registerModEventBus(MOD_ID, FMLJavaModLoadingContext.get().getModEventBus());
+        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        EventBuses.registerModEventBus(MOD_ID, modEventBus);
+
 
         // Run our common setup.
         InGameTips.init();
@@ -23,7 +26,9 @@ public final class InGameTipsForge {
         // Register ourselves for server and other game events we are interested in
         IEventBus eventBus = MinecraftForge.EVENT_BUS;
         eventBus.addListener(DatapackLoader::onAddReloadListener);
-        eventBus.addListener(ModConfigReloadingEventHandler::onConfigChanged);
+
+        // Register the mod config reloading event handler.
+        modEventBus.addListener(ModConfigReloadingEventHandler::onConfigChanged);
     }
 
 }

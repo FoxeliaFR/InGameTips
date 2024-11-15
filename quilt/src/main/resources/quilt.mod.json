@@ -51,5 +51,6 @@
       "modmenu.discord": "${discord}",
       "modmenu.modrinth": "${modrinth}"
     }
-  }
+  },
+  "mixin": "quilt.mixins.json"
 }

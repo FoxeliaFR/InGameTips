@@ -28,14 +28,9 @@ public final class InGameTips {
         ScheduleEventHandler.register();
         NetworkHandler.registerPackets();
         DatapackLoader.register();
-
-        if(Platform.getEnv().equals(EnvType.CLIENT)) {
-            initClient();
-        }
-
     }
 
-    private static void initClient() {
+    public static void initClient() {
         ClientConfig.setupClientConfig();
         OverlayEventHandler.register();
     }

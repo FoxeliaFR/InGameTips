@@ -6,6 +6,7 @@ import fr.foxelia.igtips.client.event.OverlayEventHandler;
 import fr.foxelia.igtips.config.CommonConfig;
 import fr.foxelia.igtips.datapack.DatapackLoader;
 import fr.foxelia.igtips.event.CommandEventHandler;
+import fr.foxelia.igtips.event.ConfigEventHandler;
 import fr.foxelia.igtips.event.ScheduleEventHandler;
 import fr.foxelia.igtips.event.ServerEventHandler;
 import fr.foxelia.igtips.network.NetworkHandler;
@@ -28,6 +29,7 @@ public final class InGameTips {
         ScheduleEventHandler.register();
         NetworkHandler.registerPackets();
         DatapackLoader.register();
+        ConfigEventHandler.register();
     }
 
     public static void initClient() {

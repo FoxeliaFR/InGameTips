@@ -3,5 +3,19 @@
   "commands.igtips.tip.send.success": "Tip %s sent to %s.",
 
 
-  "tip.igtips.name": "Tip"
+  "tip.igtips.name": "Tip",
+
+
+  "config.igtips.main.title": "In-Game Tips Options",
+  "config.igtips.main.button.client": "Client Settings",
+  "config.igtips.main.button.common.available": "Common Settings",
+  "config.igtips.main.button.common.unavailable": "Common Settings (Unavailable)",
+  "config.igtips.client.title": "Client Options",
+  "config.igtips.client.option.tips_enabled": "Display Tips",
+  "config.igtips.client.option.tips_enabled.tooltip": "Enables or disables the display of tips. If this option is deactivated, tips received from the server will not be displayed, but will always be marked as having been viewed.",
+  "config.igtips.client.option.sound_enabled": "Play Sound",
+  "config.igtips.client.option.sound_enabled.tooltip": "Enables or disables the sound that plays when a new tip is received.",
+  "config.igtips.client.option.max_lines": "Maximum Lines",
+  "config.igtips.client.option.max_lines.tooltip": "Sets the maximum number of lines that can be displayed in a tip. If a tip exceeds this limit, it will be truncated."
+
 }

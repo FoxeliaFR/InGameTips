@@ -30,6 +30,10 @@ public class QuiltClientConfig extends ReflectiveConfig implements IClientInGame
         private final TrackedValue<Integer> maxLines = value(ClientConfig.getMaxLines());
     }
 
+    /*
+     * Getters
+     */
+
     @Override
     public boolean isTipsEnabled() {
         return clientSection.enableTips.value();
@@ -43,5 +47,24 @@ public class QuiltClientConfig extends ReflectiveConfig implements IClientInGame
     @Override
     public int getMaxLines() {
         return clientSection.maxLines.value();
+    }
+
+    /*
+     * Setters
+     */
+
+    @Override
+    public void setTipsEnabled(boolean enabled) {
+        clientSection.enableTips.setValue(enabled);
+    }
+
+    @Override
+    public void setSoundEnabled(boolean enabled) {
+        clientSection.enableSound.setValue(enabled);
+    }
+
+    @Override
+    public void setMaxLines(int maxLines) {
+        clientSection.maxLines.setValue(maxLines);
     }
 }

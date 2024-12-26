@@ -22,23 +22,38 @@ public class ClientConfig {
         return config.getMaxLines();
     }
 
+    public static void setTipsEnabled(boolean enabled) {
+        config.setTipsEnabled(enabled);
+    }
+
+    public static void setSoundEnabled(boolean enabled) {
+        config.setSoundEnabled(enabled);
+    }
+
+    public static void setMaxLines(int maxLines) {
+        config.setMaxLines(maxLines);
+    }
+
+    public static class DefaultClientConfig implements IClientInGameTipsConfig {
+
+        @Override
+        public boolean isTipsEnabled() {
+            return true;
+        }
+
+        @Override
+        public boolean isSoundEnabled() {
+            return true;
+        }
+
+        @Override
+        public int getMaxLines() {
+            return 9;
+        }
+
+    }
 }
 
-class DefaultClientConfig implements IClientInGameTipsConfig {
 
-    @Override
-    public boolean isTipsEnabled() {
-        return true;
-    }
 
-    @Override
-    public boolean isSoundEnabled() {
-        return true;
-    }
 
-    @Override
-    public int getMaxLines() {
-        return 9;
-    }
-
-}

@@ -10,6 +10,7 @@ public class NetworkHandler {
 
     public static void registerPackets() {
         CHANNEL.register(TipPacket.class, TipPacket::encode, TipPacket::decode, TipPacketHandler::handle);
+        CHANNEL.register(ConfigPacket.class, ConfigPacket::encode, ConfigPacket::decode, ConfigPacketHandler::handle);
     }
 
 }

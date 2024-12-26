@@ -25,6 +25,9 @@
       ],
       "client_init": [
         "fr.foxelia.igtips.quilt.client.InGameTipsQuiltClient"
+      ],
+      "modmenu": [
+        "fr.foxelia.igtips.client.addons.modmenu.InGameTipsModMenuIntegration"
       ]
     },
     "depends": [
@@ -38,11 +41,11 @@
       },
       {
         "id": "minecraft",
-        "version": ">=1.20.1"
+        "version": ">=${minecraft_version}"
       },
       {
         "id": "architectury",
-        "version": ">=9.2.14"
+        "version": ">=${depend_architectury}"
       }
     ]
   },

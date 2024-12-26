@@ -21,6 +21,9 @@
     ],
     "client": [
       "fr.foxelia.igtips.fabric.client.InGameTipsFabricClient"
+    ],
+    "modmenu": [
+      "fr.foxelia.igtips.client.addons.modmenu.InGameTipsModMenuIntegration"
     ]
   },
   "custom": {

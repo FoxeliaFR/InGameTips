@@ -33,33 +33,53 @@ public class CommonConfig {
         return config.isRecyclingTips();
     }
 
-}
-
-class DefaultCommonConfig implements ICommonInGameTipsConfig {
-
-    @Override
-    public int getScheduleInterval() {
-        return 900;
+    public static void setScheduleInterval(int interval) {
+        config.setScheduleInterval(interval);
     }
 
-    @Override
-    public List<String> getDisabledNamespaces() {
-        return new ArrayList<>();
+    public static void setDisabledNamespaces(List<String> namespaces) {
+        config.setDisabledNamespaces(namespaces);
     }
 
-    @Override
-    public boolean getSyncSending() {
-        return false;
+    public static void setSyncSending(boolean syncSending) {
+        config.setSyncSending(syncSending);
     }
 
-    @Override
-    public boolean isIndividualTips() {
-        return false;
+    public static void setIndividualTips(boolean individualTips) {
+        config.setIndividualTips(individualTips);
     }
 
-    @Override
-    public boolean isRecyclingTips() {
-        return false;
+    public static void setRecyclingTips(boolean recyclingTips) {
+        config.setRecyclingTips(recyclingTips);
+    }
+
+    public static class DefaultCommonConfig implements ICommonInGameTipsConfig {
+
+        @Override
+        public int getScheduleInterval() {
+            return 900;
+        }
+
+        @Override
+        public List<String> getDisabledNamespaces() {
+            return new ArrayList<>();
+        }
+
+        @Override
+        public boolean getSyncSending() {
+            return false;
+        }
+
+        @Override
+        public boolean isIndividualTips() {
+            return false;
+        }
+
+        @Override
+        public boolean isRecyclingTips() {
+            return false;
+        }
+
     }
 
 }

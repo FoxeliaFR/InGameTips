@@ -35,7 +35,8 @@
     }
   },
   "mixins": [
-    "fabric.mixins.json"
+    "fabric.mixins.json",
+    "igtips.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=${depend_fabric}",

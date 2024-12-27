@@ -55,5 +55,8 @@
       "modmenu.modrinth": "${modrinth}"
     }
   },
-  "mixin": "quilt.mixins.json"
+  "mixin": [
+    "quilt.mixins.json",
+    "igtips.mixins.json"
+  ]
 }

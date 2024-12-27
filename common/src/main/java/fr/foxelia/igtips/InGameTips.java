@@ -2,6 +2,7 @@ package fr.foxelia.igtips;
 
 import dev.architectury.platform.Platform;
 import fr.foxelia.igtips.client.config.ClientConfig;
+import fr.foxelia.igtips.client.event.ClientEventHandler;
 import fr.foxelia.igtips.client.event.OverlayEventHandler;
 import fr.foxelia.igtips.config.CommonConfig;
 import fr.foxelia.igtips.datapack.DatapackLoader;
@@ -35,5 +36,6 @@ public final class InGameTips {
     public static void initClient() {
         ClientConfig.setupClientConfig();
         OverlayEventHandler.register();
+        ClientEventHandler.register();
     }
 }

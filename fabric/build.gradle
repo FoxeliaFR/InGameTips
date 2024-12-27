@@ -71,6 +71,12 @@ processResources {
 
 }
 
+sourceSets {
+    main {
+        resources.srcDir project(":common").sourceSets.main.resources.srcDirs
+    }
+}
+
 shadowJar {
     configurations = [project.configurations.shadowBundle]
     archiveClassifier = 'dev-shadow'

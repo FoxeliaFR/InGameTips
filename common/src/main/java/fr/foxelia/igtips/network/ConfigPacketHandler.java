@@ -32,36 +32,34 @@ public class ConfigPacketHandler {
 
                 }
             } else {
-                ICommonInGameTipsConfig serverConfig = null;
-                if(packet != null) {
-                    serverConfig = new ICommonInGameTipsConfig() {
-                        @Override
-                        public int getScheduleInterval() {
-                            return packet.scheduleInterval();
-                        }
+                if(packet.unsync()) {
+                    CommonConfigManager.SERVER_CONFIG = null;
+                } else CommonConfigManager.SERVER_CONFIG = new ICommonInGameTipsConfig() {
+                    @Override
+                    public int getScheduleInterval() {
+                        return packet.scheduleInterval();
+                    }
 
-                        @Override
-                        public List<String> getDisabledNamespaces() {
-                            return packet.disabledNamespaces();
-                        }
+                    @Override
+                    public List<String> getDisabledNamespaces() {
+                        return packet.disabledNamespaces();
+                    }
 
-                        @Override
-                        public boolean getSyncSending() {
-                            return packet.syncSending();
-                        }
+                    @Override
+                    public boolean getSyncSending() {
+                        return packet.syncSending();
+                    }
 
-                        @Override
-                        public boolean isIndividualTips() {
-                            return packet.individualTips();
-                        }
+                    @Override
+                    public boolean isIndividualTips() {
+                        return packet.individualTips();
+                    }
 
-                        @Override
-                        public boolean isRecyclingTips() {
-                            return packet.recyclingTips();
-                        }
-                    };
-                }
-                CommonConfigManager.SERVER_CONFIG = serverConfig;
+                    @Override
+                    public boolean isRecyclingTips() {
+                        return packet.recyclingTips();
+                    }
+                };
             }
         });
     }

@@ -1,5 +1,7 @@
 package fr.foxelia.igtips.client.addons.clothconfig;
 
+import fr.foxelia.igtips.config.CommonConfigManager;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
@@ -59,6 +61,7 @@ public class InGameTipsMainConfigScreen extends Screen {
     }
 
     private boolean isCommonSettingsEnabled() {
+        if(CommonConfigManager.SERVER_CONFIG != null) return true;
         return false;
     }
 

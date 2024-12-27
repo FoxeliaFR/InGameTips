@@ -6,6 +6,8 @@
   "client": [
   ],
   "mixins": [
+    "OperatorEntryMixin",
+    "PlayerManagerMixin"
   ],
   "injectors": {
     "defaultRequire": 1

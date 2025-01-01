@@ -38,6 +38,7 @@ public class QuiltCommonConfig extends ReflectiveConfig implements ICommonInGame
         private final TrackedValue<Boolean> tipRecycling = value(CommonConfig.isRecyclingTips());
 
         // Processors
+        @SuppressWarnings("unused")
         public void process(TrackedValue.Builder<Integer> builder) {
             refreshSchedules(builder);
         }
@@ -58,6 +59,7 @@ public class QuiltCommonConfig extends ReflectiveConfig implements ICommonInGame
         private final TrackedValue<Boolean> individualTips = value(CommonConfig.isIndividualTips());
 
         // Processors
+        @SuppressWarnings("unused")
         public void process(TrackedValue.Builder<Boolean> builder) {
             refreshSchedules(builder);
         }
@@ -91,6 +93,35 @@ public class QuiltCommonConfig extends ReflectiveConfig implements ICommonInGame
     @Override
     public boolean isRecyclingTips() {
         return commonSection.tipRecycling.value();
+    }
+
+    /*
+     * Setters
+     */
+
+    @Override
+    public void setScheduleInterval(int interval) {
+        commonSection.scheduleTime.setValue(interval);
+    }
+
+    @Override
+    public void setDisabledNamespaces(List<String> disabledNamespaces) {
+        commonSection.disabledNamespaces.setValue(list("", disabledNamespaces.toArray(new String[0])).value());
+    }
+
+    @Override
+    public void setRecyclingTips(boolean recyclingTips) {
+        commonSection.tipRecycling.setValue(recyclingTips);
+    }
+
+    @Override
+    public void setSyncSending(boolean syncSending) {
+        syncSection.syncSending.setValue(syncSending);
+    }
+
+    @Override
+    public void setIndividualTips(boolean individualTips) {
+        syncSection.individualTips.setValue(individualTips);
     }
 
     /*

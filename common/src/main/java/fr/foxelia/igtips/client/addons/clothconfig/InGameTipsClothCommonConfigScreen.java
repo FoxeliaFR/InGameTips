@@ -100,9 +100,9 @@ public class InGameTipsClothCommonConfigScreen {
                 ConfigPacket packet = new ConfigPacket(
                         scheduleTime.getValue(),
                         disabledNamespaces.getValue(),
-                        tipRecycling.getValue(),
                         syncSending.getValue(),
                         individualTips.getValue(),
+                        tipRecycling.getValue(),
                         false
                 );
                 NetworkHandler.CHANNEL.sendToServer(packet);

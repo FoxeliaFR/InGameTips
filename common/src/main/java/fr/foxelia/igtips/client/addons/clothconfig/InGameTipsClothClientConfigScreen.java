@@ -2,15 +2,11 @@ package fr.foxelia.igtips.client.addons.clothconfig;
 
 import fr.foxelia.igtips.client.config.ClientConfig;
 import fr.foxelia.igtips.client.config.IClientInGameTipsConfig;
-import me.shedaniel.autoconfig.annotation.Config;
 import me.shedaniel.clothconfig2.api.ConfigBuilder;
 import me.shedaniel.clothconfig2.api.ConfigCategory;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.text.Text;
 
-import static fr.foxelia.igtips.InGameTips.MOD_ID;
-
-@Config(name = MOD_ID)
 public class InGameTipsClothClientConfigScreen {
 
     public static Screen createConfigScreen(Screen parent) {

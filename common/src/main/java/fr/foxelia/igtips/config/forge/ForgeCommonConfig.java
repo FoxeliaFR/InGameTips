@@ -1,7 +1,9 @@
 package fr.foxelia.igtips.config.forge;
 
+import fr.foxelia.igtips.InGameTips;
 import fr.foxelia.igtips.config.CommonConfig;
 import fr.foxelia.igtips.config.ICommonInGameTipsConfig;
+import fr.foxelia.igtips.schedule.ScheduleManager;
 import net.minecraftforge.common.ForgeConfigSpec;
 
 import java.util.List;
@@ -79,6 +81,7 @@ public class ForgeCommonConfig implements ICommonInGameTipsConfig {
     @Override
     public void setScheduleInterval(int scheduleInterval) {
         scheduleTime.set(scheduleInterval);
+        refreshSchedules();
     }
 
     @Override
@@ -94,11 +97,21 @@ public class ForgeCommonConfig implements ICommonInGameTipsConfig {
     @Override
     public void setSyncSending(boolean syncSending) {
         this.syncSending.set(syncSending);
+        refreshSchedules();
     }
 
     @Override
     public void setIndividualTips(boolean individualTips) {
         this.individualTips.set(individualTips);
+        refreshSchedules();
+    }
+
+    /*
+     * Processors
+     */
+
+    private static void refreshSchedules() {
+        if(InGameTips.SERVER != null) ScheduleManager.INSTANCE.refresh();
     }
 
 }

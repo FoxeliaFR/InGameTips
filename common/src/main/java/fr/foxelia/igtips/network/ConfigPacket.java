@@ -20,7 +20,8 @@ public record ConfigPacket(int scheduleInterval, List<String> disabledNamespaces
             return new ConfigPacket(0, List.of(), false, false, false, true);
         }
         int scheduleInterval = buffer.readInt();
-        List<String> disabledNamespaces = List.of(buffer.readString().split(","));
+        String strDisabledNamespaces = buffer.readString();
+        List<String> disabledNamespaces = strDisabledNamespaces.isEmpty() ? List.of() : List.of(strDisabledNamespaces.split(","));
         boolean syncSending = buffer.readBoolean();
         boolean individualTips = buffer.readBoolean();
         boolean recyclingTips = buffer.readBoolean();

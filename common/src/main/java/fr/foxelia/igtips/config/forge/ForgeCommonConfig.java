@@ -39,6 +39,10 @@ public class ForgeCommonConfig implements ICommonInGameTipsConfig {
         commonConfig = commonBuilder.build();
     }
 
+    /*
+     * Getters
+     */
+
     public ForgeConfigSpec getConfig() {
         return commonConfig;
     }
@@ -67,4 +71,34 @@ public class ForgeCommonConfig implements ICommonInGameTipsConfig {
     public boolean isRecyclingTips() {
         return tipRecycling.get();
     }
+
+    /*
+     * Setters
+     */
+
+    @Override
+    public void setScheduleInterval(int scheduleInterval) {
+        scheduleTime.set(scheduleInterval);
+    }
+
+    @Override
+    public void setDisabledNamespaces(List<String> disabledNamespaces) {
+        this.disabledNamespaces.set(disabledNamespaces);
+    }
+
+    @Override
+    public void setRecyclingTips(boolean recyclingTips) {
+        tipRecycling.set(recyclingTips);
+    }
+
+    @Override
+    public void setSyncSending(boolean syncSending) {
+        this.syncSending.set(syncSending);
+    }
+
+    @Override
+    public void setIndividualTips(boolean individualTips) {
+        this.individualTips.set(individualTips);
+    }
+
 }

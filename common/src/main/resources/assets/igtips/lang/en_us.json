@@ -22,6 +22,16 @@
   "config.igtips.common.category.general": "General",
   "config.igtips.common.category.sync": "Synchronization",
   "config.igtips.common.option.schedule_time": "Schedule Time",
-  "config.igtips.common.option.schedule_time.tooltip": "Sets the time in seconds between each tip. If the value is set to 0, the tips won't be sent automatically.\n\nExample: 60 (1 minute), 90 (1 minute 30 seconds), 300 (5 minutes)"
+  "config.igtips.common.option.schedule_time.tooltip": "Sets the time in seconds between each tip. If the value is set to 0, the tips won't be sent automatically.\n\nExample: 60 (1 minute), 90 (1 minute 30 seconds), 300 (5 minutes)",
+  "config.igtips.common.option.disabled_namespaces": "Disabled Namespaces",
+  "config.igtips.common.option.disabled_namespaces.tooltip": "Sets the namespaces will not be loaded on datapack loading/reloading. This option is useful for disabling tips from specific mods (modid) or packs (datapackid).",
+  "config.igtips.common.option.disabled_namespaces.error.empty": "One or more namespaces are empty fields.",
+  "config.igtips.common.option.disabled_namespaces.error.invalid": "Use only lowercase letters, numbers, _, -, and .",
+  "config.igtips.common.option.tip_recycling": "Tip Recycling",
+  "config.igtips.common.option.tip_recycling.tooltip": "Enables or disables the reuse of tips that have already been displayed. When this option is activated, viewed tips will be reset after the last tip has been displayed.",
+  "config.igtips.common.option.sync_sending": "Synchronize Sending",
+  "config.igtips.common.option.sync_sending.tooltip": "This option allows the server to send tips to all connected clients at the same time. If this option is deactivated, the server will send tips to each client individually with their own schedule time.",
+  "config.igtips.common.option.individual_tips": "Individual Tips",
+  "config.igtips.common.option.individual_tips.tooltip": "Enables or disables the tips to be sent individually to each client. If this option is deactivated, the server will send the same tip to all connected clients at the same time."
 
 }

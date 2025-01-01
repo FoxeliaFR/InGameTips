@@ -1,17 +1,23 @@
 package fr.foxelia.igtips.client.addons.clothconfig;
 
-import fr.foxelia.igtips.client.config.ClientConfig;
-import fr.foxelia.igtips.client.config.IClientInGameTipsConfig;
 import fr.foxelia.igtips.config.CommonConfig;
 import fr.foxelia.igtips.config.CommonConfigManager;
 import fr.foxelia.igtips.config.ICommonInGameTipsConfig;
+import fr.foxelia.igtips.network.ConfigPacket;
+import fr.foxelia.igtips.network.NetworkHandler;
 import me.shedaniel.autoconfig.annotation.Config;
 import me.shedaniel.clothconfig2.api.ConfigBuilder;
 import me.shedaniel.clothconfig2.api.ConfigCategory;
+import me.shedaniel.clothconfig2.gui.entries.BooleanListEntry;
+import me.shedaniel.clothconfig2.gui.entries.IntegerListEntry;
+import me.shedaniel.clothconfig2.gui.entries.StringListListEntry;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.text.Text;
 
+import java.util.Optional;
+
 import static fr.foxelia.igtips.InGameTips.MOD_ID;
+import static fr.foxelia.igtips.client.addons.clothconfig.InGameTipsMainConfigScreen.isLocal;
 
 @Config(name = MOD_ID)
 public class InGameTipsClothCommonConfigScreen {
@@ -20,34 +26,92 @@ public class InGameTipsClothCommonConfigScreen {
         ConfigBuilder builder = ConfigBuilder.create()
                 .setParentScreen(parent);
 
-        boolean isServerConfig = false;
-        if(CommonConfigManager.SERVER_CONFIG != null) {
-            isServerConfig = true;
+        boolean isRemote;
+        if(CommonConfigManager.SERVER_CONFIG != null && !isLocal()) {
+            isRemote = true;
             builder.setTitle(Text.translatable("config.igtips.common.title.server"));
         } else {
+            isRemote = false;
             builder.setTitle(Text.translatable("config.igtips.common.title.local"));
         }
 
         // Categories
         ConfigCategory general = builder.getOrCreateCategory(Text.translatable("config.igtips.common.category.general"));
+        ConfigCategory sync = builder.getOrCreateCategory(Text.translatable("config.igtips.common.category.sync"));
 
         // Get default values from the config
         ICommonInGameTipsConfig defaultConfig = new CommonConfig.DefaultCommonConfig();
 
-        // Entries
-        Integer scheduleTime;
-        general.addEntry(builder.entryBuilder()
-                        .startIntField(Text.translatable("config.igtips.common.option.schedule_time"), CommonConfig.getScheduleInterval())
-                        .setTooltip(Text.translatable("config.igtips.common.option.schedule_time.tooltip"))
-                        .setDefaultValue(defaultConfig.getScheduleInterval())
-                        .setSaveConsumer(newValue -> System.out.println("Test"))
-                        .build());
+        // General Entries
+        IntegerListEntry scheduleTime = builder.entryBuilder()
+                .startIntField(Text.translatable("config.igtips.common.option.schedule_time"), CommonConfig.getScheduleInterval())
+                .setTooltip(Text.translatable("config.igtips.common.option.schedule_time.tooltip"))
+                .setDefaultValue(defaultConfig.getScheduleInterval())
+                .setMin(0)
+                .build();
+        general.addEntry(scheduleTime);
 
-                /*.startBooleanToggle(Text.translatable("config.igtips.client.option.tips_enabled"), ClientConfig.isTipsEnabled())
-                .setTooltip(Text.translatable("config.igtips.client.option.tips_enabled.tooltip"))
-                .setDefaultValue(defaultConfig.isTipsEnabled())
-                .setSaveConsumer(newValue -> ClientConfig.setTipsEnabled(newValue))
-                .build());*/
+        StringListListEntry disabledNamespaces = builder.entryBuilder()
+                .startStrList(Text.translatable("config.igtips.common.option.disabled_namespaces"), CommonConfig.getDisabledNamespaces())
+                .setTooltip(Text.translatable("config.igtips.common.option.disabled_namespaces.tooltip"))
+                .setDefaultValue(defaultConfig.getDisabledNamespaces())
+                .setErrorSupplier(value -> {
+                    for(String namespace : value) {
+                        if(namespace.isEmpty()) {
+                            return Optional.of(Text.translatable("config.igtips.common.option.disabled_namespaces.error.empty"));
+                        }
+                        if(!namespace.matches("^[a-z0-9._-]+$")) {
+                            return Optional.of(Text.translatable("config.igtips.common.option.disabled_namespaces.error.invalid"));
+                        }
+                    }
+                    return Optional.empty();
+                })
+                .build();
+        general.addEntry(disabledNamespaces);
+
+        BooleanListEntry tipRecycling = builder.entryBuilder()
+                .startBooleanToggle(Text.translatable("config.igtips.common.option.tip_recycling"), CommonConfig.isRecyclingTips())
+                .setTooltip(Text.translatable("config.igtips.common.option.tip_recycling.tooltip"))
+                .setDefaultValue(defaultConfig.isRecyclingTips())
+                .build();
+        general.addEntry(tipRecycling);
+
+        // Synchronization Entries
+        BooleanListEntry syncSending = builder.entryBuilder()
+                .startBooleanToggle(Text.translatable("config.igtips.common.option.sync_sending"), CommonConfig.isSyncSending())
+                .setTooltip(Text.translatable("config.igtips.common.option.sync_sending.tooltip"))
+                .setDefaultValue(defaultConfig.getSyncSending())
+                .build();
+        sync.addEntry(syncSending);
+
+        BooleanListEntry individualTips = builder.entryBuilder()
+                .startBooleanToggle(Text.translatable("config.igtips.common.option.individual_tips"), CommonConfig.isIndividualTips())
+                .setTooltip(Text.translatable("config.igtips.common.option.individual_tips.tooltip"))
+                .setDefaultValue(defaultConfig.isIndividualTips())
+                .setRequirement(() -> syncSending.getValue())
+                .build();
+        sync.addEntry(individualTips);
+
+        // Save the config
+        builder.setSavingRunnable(() -> {
+            if(isRemote) {
+                ConfigPacket packet = new ConfigPacket(
+                        scheduleTime.getValue(),
+                        disabledNamespaces.getValue(),
+                        tipRecycling.getValue(),
+                        syncSending.getValue(),
+                        individualTips.getValue(),
+                        false
+                );
+                NetworkHandler.CHANNEL.sendToServer(packet);
+            } else {
+                CommonConfig.setScheduleInterval(scheduleTime.getValue());
+                CommonConfig.setDisabledNamespaces(disabledNamespaces.getValue());
+                CommonConfig.setRecyclingTips(tipRecycling.getValue());
+                CommonConfig.setSyncSending(syncSending.getValue());
+                CommonConfig.setIndividualTips(individualTips.getValue());
+            }
+        });
 
         // Return the screen here with the one you created from Cloth Config Builder
         return builder.build();

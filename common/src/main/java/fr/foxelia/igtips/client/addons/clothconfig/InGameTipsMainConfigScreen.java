@@ -60,9 +60,13 @@ public class InGameTipsMainConfigScreen extends Screen {
         super.render(context, mouseX, mouseY, delta);
     }
 
-    private boolean isCommonSettingsEnabled() {
-        if(CommonConfigManager.SERVER_CONFIG != null) return true;
-        return false;
+    private static boolean isCommonSettingsEnabled() {
+        return CommonConfigManager.SERVER_CONFIG != null || isLocal();
+    }
+
+    protected static boolean isLocal() {
+        MinecraftClient mc = MinecraftClient.getInstance();
+        return mc.getNetworkHandler() == null || mc.isInSingleplayer();
     }
 
 }

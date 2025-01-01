@@ -27,6 +27,10 @@ public class ForgeClientConfig implements IClientInGameTipsConfig {
         clientConfig = clientBuilder.build();
     }
 
+    /*
+     * Getters
+     */
+
     public ForgeConfigSpec getConfig() {
         return clientConfig;
     }
@@ -44,5 +48,24 @@ public class ForgeClientConfig implements IClientInGameTipsConfig {
     @Override
     public int getMaxLines() {
         return maxLines.get();
+    }
+
+    /*
+     * Setters
+     */
+
+    @Override
+    public void setTipsEnabled(boolean enabled) {
+        enableTips.set(enabled);
+    }
+
+    @Override
+    public void setSoundEnabled(boolean enabled) {
+        enableSound.set(enabled);
+    }
+
+    @Override
+    public void setMaxLines(int lines) {
+        maxLines.set(lines);
     }
 }

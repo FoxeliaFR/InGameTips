@@ -22,7 +22,7 @@ public class CommonConfig {
     }
 
     public static boolean isSyncSending() {
-        return config.getSyncSending();
+        return config.isSyncSending();
     }
 
     public static boolean isIndividualTips() {
@@ -66,7 +66,7 @@ public class CommonConfig {
         }
 
         @Override
-        public boolean getSyncSending() {
+        public boolean isSyncSending() {
             return false;
         }
 

@@ -79,7 +79,7 @@ public class QuiltCommonConfig extends ReflectiveConfig implements ICommonInGame
     }
 
     @Override
-    public boolean getSyncSending() {
+    public boolean isSyncSending() {
         return syncSection.syncSending.value();
     }
 

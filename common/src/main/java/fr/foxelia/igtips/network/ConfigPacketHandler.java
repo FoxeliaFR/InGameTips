@@ -46,7 +46,7 @@ public class ConfigPacketHandler {
                     }
 
                     @Override
-                    public boolean getSyncSending() {
+                    public boolean isSyncSending() {
                         return packet.syncSending();
                     }
 

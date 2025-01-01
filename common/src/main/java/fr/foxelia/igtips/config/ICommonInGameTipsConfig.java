@@ -26,7 +26,7 @@ public interface ICommonInGameTipsConfig {
 
     int getScheduleInterval();
     List<String> getDisabledNamespaces();
-    boolean getSyncSending();
+    boolean isSyncSending();
     boolean isIndividualTips();
     boolean isRecyclingTips();
 

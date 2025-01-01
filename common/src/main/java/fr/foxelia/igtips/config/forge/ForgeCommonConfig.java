@@ -54,7 +54,7 @@ public class ForgeCommonConfig implements ICommonInGameTipsConfig {
     }
 
     @Override
-    public boolean getSyncSending() {
+    public boolean isSyncSending() {
         return syncSending.get();
     }
 

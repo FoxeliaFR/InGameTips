@@ -5,7 +5,6 @@ import fr.foxelia.igtips.config.CommonConfigManager;
 import fr.foxelia.igtips.config.ICommonInGameTipsConfig;
 import fr.foxelia.igtips.network.ConfigPacket;
 import fr.foxelia.igtips.network.NetworkHandler;
-import me.shedaniel.autoconfig.annotation.Config;
 import me.shedaniel.clothconfig2.api.ConfigBuilder;
 import me.shedaniel.clothconfig2.api.ConfigCategory;
 import me.shedaniel.clothconfig2.gui.entries.BooleanListEntry;
@@ -16,10 +15,8 @@ import net.minecraft.text.Text;
 
 import java.util.Optional;
 
-import static fr.foxelia.igtips.InGameTips.MOD_ID;
 import static fr.foxelia.igtips.client.addons.clothconfig.InGameTipsMainConfigScreen.isLocal;
 
-@Config(name = MOD_ID)
 public class InGameTipsClothCommonConfigScreen {
 
     public static Screen createConfigScreen(Screen parent) {
@@ -44,7 +41,8 @@ public class InGameTipsClothCommonConfigScreen {
 
         // General Entries
         IntegerListEntry scheduleTime = builder.entryBuilder()
-                .startIntField(Text.translatable("config.igtips.common.option.schedule_time"), CommonConfig.getScheduleInterval())
+                .startIntField(Text.translatable("config.igtips.common.option.schedule_time"),
+                        isRemote ? CommonConfigManager.SERVER_CONFIG.getScheduleInterval() : CommonConfig.getScheduleInterval())
                 .setTooltip(Text.translatable("config.igtips.common.option.schedule_time.tooltip"))
                 .setDefaultValue(defaultConfig.getScheduleInterval())
                 .setMin(0)
@@ -52,7 +50,8 @@ public class InGameTipsClothCommonConfigScreen {
         general.addEntry(scheduleTime);
 
         StringListListEntry disabledNamespaces = builder.entryBuilder()
-                .startStrList(Text.translatable("config.igtips.common.option.disabled_namespaces"), CommonConfig.getDisabledNamespaces())
+                .startStrList(Text.translatable("config.igtips.common.option.disabled_namespaces"),
+                        isRemote ? CommonConfigManager.SERVER_CONFIG.getDisabledNamespaces() : CommonConfig.getDisabledNamespaces())
                 .setTooltip(Text.translatable("config.igtips.common.option.disabled_namespaces.tooltip"))
                 .setDefaultValue(defaultConfig.getDisabledNamespaces())
                 .setErrorSupplier(value -> {
@@ -70,7 +69,8 @@ public class InGameTipsClothCommonConfigScreen {
         general.addEntry(disabledNamespaces);
 
         BooleanListEntry tipRecycling = builder.entryBuilder()
-                .startBooleanToggle(Text.translatable("config.igtips.common.option.tip_recycling"), CommonConfig.isRecyclingTips())
+                .startBooleanToggle(Text.translatable("config.igtips.common.option.tip_recycling"),
+                        isRemote ? CommonConfigManager.SERVER_CONFIG.isRecyclingTips() : CommonConfig.isRecyclingTips())
                 .setTooltip(Text.translatable("config.igtips.common.option.tip_recycling.tooltip"))
                 .setDefaultValue(defaultConfig.isRecyclingTips())
                 .build();
@@ -78,14 +78,16 @@ public class InGameTipsClothCommonConfigScreen {
 
         // Synchronization Entries
         BooleanListEntry syncSending = builder.entryBuilder()
-                .startBooleanToggle(Text.translatable("config.igtips.common.option.sync_sending"), CommonConfig.isSyncSending())
+                .startBooleanToggle(Text.translatable("config.igtips.common.option.sync_sending"),
+                        isRemote ? CommonConfigManager.SERVER_CONFIG.isSyncSending() : CommonConfig.isSyncSending())
                 .setTooltip(Text.translatable("config.igtips.common.option.sync_sending.tooltip"))
-                .setDefaultValue(defaultConfig.getSyncSending())
+                .setDefaultValue(defaultConfig.isSyncSending())
                 .build();
         sync.addEntry(syncSending);
 
         BooleanListEntry individualTips = builder.entryBuilder()
-                .startBooleanToggle(Text.translatable("config.igtips.common.option.individual_tips"), CommonConfig.isIndividualTips())
+                .startBooleanToggle(Text.translatable("config.igtips.common.option.individual_tips"),
+                        isRemote ? CommonConfigManager.SERVER_CONFIG.isIndividualTips() : CommonConfig.isIndividualTips())
                 .setTooltip(Text.translatable("config.igtips.common.option.individual_tips.tooltip"))
                 .setDefaultValue(defaultConfig.isIndividualTips())
                 .setRequirement(() -> syncSending.getValue())

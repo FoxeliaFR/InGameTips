@@ -25,11 +25,8 @@ public class ConfigPacketHandler {
                     CommonConfig.setIndividualTips(packet.individualTips());
                     CommonConfig.setRecyclingTips(packet.recyclingTips());
 
-                    // Send the updated config to all connected clients with correct permission level except the sender.
-                    InGameTips.SERVER.getPlayerManager().getPlayerList().forEach(player -> {
-                        if(!player.equals(ctx.getPlayer())) CommonConfigManager.syncConfigToPlayer(player);
-                    });
-
+                    // Send the updated config to all connected clients with correct permission level.
+                    InGameTips.SERVER.getPlayerManager().getPlayerList().forEach(player -> CommonConfigManager.syncConfigToPlayer(player));
                 }
             } else {
                 if(packet.unsync()) {

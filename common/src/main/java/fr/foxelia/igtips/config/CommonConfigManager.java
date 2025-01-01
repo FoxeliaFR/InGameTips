@@ -8,15 +8,6 @@ import java.util.List;
 
 public class CommonConfigManager {
 
-    /*
-     * TODO:
-     *  - TEST: Update the config on the server side.
-     *  - S: Reload schedules on update.
-     *  - S: Save the config to the disk.
-     *  - TEST: Unload the server config on disconnect / on deop.
-     *  - TEST: Update the client config on file change / any change . (Quilt, Fabric, Forge)
-     */
-
     public static final int EDIT_PERMISSION_LEVEL = 3;
     public static ICommonInGameTipsConfig SERVER_CONFIG = null;
 

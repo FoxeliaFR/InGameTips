@@ -1,0 +1,5 @@
+{
+  "commands.igtips.tip.unknown": "Der Tipp %s existiert nicht. Stellen Sie sicher, dass Sie die richtige Bezeichnung verwenden und dass diese auf den Server geladen wird.",
+  "commands.igtips.tip.send.success": "Tipp %s gesendet an %s.",
+  "tip.igtips.name": "Tipp"
+}

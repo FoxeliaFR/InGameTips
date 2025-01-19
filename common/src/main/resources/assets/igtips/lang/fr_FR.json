@@ -1,5 +1,5 @@
 {
-  "commands.igtips.tip.unknown": "Il consiglio di %s non esiste. Assicurarsi di utilizzare il nome corretto e che sia caricato sul server.",
-  "commands.igtips.tip.send.success": "Consiglio %s inviato a %s.",
-  "tip.igtips.name": "Consiglio"
+  "commands.igtips.tip.unknown": "L'astúcia %s existís pas. Asseguratz vos qu'utilizatz la bona denominacion e qu'es cargada sul servidor.",
+  "commands.igtips.tip.send.success": "Astúcia %s enviada a %s.",
+  "tip.igtips.name": "Astúcia"
 }

@@ -1,7 +1,7 @@
 {
-  "commands.igtips.tip.unknown": "The tip %s does not exist. Make sure you are using the correct name and ensure that's loaded on the server.",
-  "commands.igtips.tip.send.success": "Tip %s sent to %s.",
-  "tip.igtips.name": "Tip",
+  "commands.igtips.tip.unknown": "L'astucia %s no existe. Asegúrese qu'está utilizando el nombre correcto y de que está cargado en el servidor.",
+  "commands.igtips.tip.send.success": "Astucia %s enviada a %s.",
+  "tip.igtips.name": "Astucia",
   "config.igtips.main.title": "In-Game Tips Options",
   "config.igtips.main.button.client": "Client Settings",
   "config.igtips.main.button.common.available": "Common Settings",

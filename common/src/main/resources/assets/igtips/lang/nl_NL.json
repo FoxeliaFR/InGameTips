@@ -1,5 +1,5 @@
 {
-  "commands.igtips.tip.unknown": "L'astucia %s no existe. Asegúrese qu'está utilizando el nombre correcto y de que está cargado en el servidor.",
-  "commands.igtips.tip.send.success": "Astucia %s enviada a %s.",
-  "tip.igtips.name": "Astucia"
+  "commands.igtips.tip.unknown": "L'astuce %s n'existe pas. Assurez-vous que vous utilisez la bonne dénomination et qu'elle est chargée sur le serveur.",
+  "commands.igtips.tip.send.success": "Astuce %s envoyée à %s.",
+  "tip.igtips.name": "Astuce"
 }

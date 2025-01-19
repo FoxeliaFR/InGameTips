@@ -11,6 +11,7 @@
 [![Help Discord](https://img.shields.io/discord/790329796080042044?color=blue&label=Help%20Discord)](https://discord.gg/Ny28nkh4Fj)
 [![Team Discord](https://img.shields.io/discord/341897164642975756?color=blue&label=Team%20Discord)](https://discord.foxelia.fr)
 [![GitHub](https://img.shields.io/github/stars/FoxeliaFR/RandomJavaTools?style=social)](https://github.com/FoxeliaFR/InGameTips)
+[![Crowdin](https://badges.crowdin.net/igtips/localized.svg)](https://crowdin.com/project/igtips)
 
 InGameTips is a vanilla friendly mod that allows you to display tips directly in the game. The mod is highly customizable and allows you to create, schedule and disable tips. Tips are server-sided and can be displayed to all players on the server with the mod installed.
 <br><br>This mod is very useful for **server owners**, **mod makers** or **modpack creators** who want to facilitate the understanding of their content.

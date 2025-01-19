@@ -1,7 +1,32 @@
 {
-  "commands.igtips.tip.unknown": "Der Tipp %s existiert nicht. Stellen Sie sicher, dass Sie die richtige Bezeichnung verwenden und dass diese auf den Server geladen wird.",
-  "commands.igtips.tip.send.success": "Tipp %s gesendet an %s.",
-
-
-  "tip.igtips.name": "Tipp"
+  "commands.igtips.tip.unknown": "The tip %s does not exist. Make sure you are using the correct name and ensure that's loaded on the server.",
+  "commands.igtips.tip.send.success": "Tip %s sent to %s.",
+  "tip.igtips.name": "Tip",
+  "config.igtips.main.title": "In-Game Tips Options",
+  "config.igtips.main.button.client": "Client Settings",
+  "config.igtips.main.button.common.available": "Common Settings",
+  "config.igtips.main.button.common.unavailable": "Common Settings (Unavailable)",
+  "config.igtips.client.title": "Client Options",
+  "config.igtips.client.option.tips_enabled": "Display Tips",
+  "config.igtips.client.option.tips_enabled.tooltip": "Enables or disables the display of tips. If this option is deactivated, tips received from the server will not be displayed, but will always be marked as having been viewed.",
+  "config.igtips.client.option.sound_enabled": "Play Sound",
+  "config.igtips.client.option.sound_enabled.tooltip": "Enables or disables the sound that plays when a new tip is received.",
+  "config.igtips.client.option.max_lines": "Maximum Lines",
+  "config.igtips.client.option.max_lines.tooltip": "Sets the maximum number of lines that can be displayed in a tip. If a tip exceeds this limit, it will be truncated.",
+  "config.igtips.common.title.local": "Common Options (Local)",
+  "config.igtips.common.title.server": "Common Options (Server)",
+  "config.igtips.common.category.general": "General",
+  "config.igtips.common.category.sync": "Synchronization",
+  "config.igtips.common.option.schedule_time": "Schedule Time",
+  "config.igtips.common.option.schedule_time.tooltip": "Sets the time in seconds between each tip. If the value is set to 0, the tips won't be sent automatically.\n\nExample: 60 (1 minute), 90 (1 minute 30 seconds), 300 (5 minutes)",
+  "config.igtips.common.option.disabled_namespaces": "Disabled Namespaces",
+  "config.igtips.common.option.disabled_namespaces.tooltip": "Sets the namespaces will not be loaded on datapack loading/reloading. This option is useful for disabling tips from specific mods (modid) or packs (datapackid).",
+  "config.igtips.common.option.disabled_namespaces.error.empty": "One or more namespaces are empty fields.",
+  "config.igtips.common.option.disabled_namespaces.error.invalid": "Use only lowercase letters, numbers, _, -, and .",
+  "config.igtips.common.option.tip_recycling": "Tip Recycling",
+  "config.igtips.common.option.tip_recycling.tooltip": "Enables or disables the reuse of tips that have already been displayed. When this option is activated, viewed tips will be reset after the last tip has been displayed.",
+  "config.igtips.common.option.sync_sending": "Synchronize Sending",
+  "config.igtips.common.option.sync_sending.tooltip": "This option allows the server to send tips to all connected clients at the same time. If this option is deactivated, the server will send tips to each client individually with their own schedule time.",
+  "config.igtips.common.option.individual_tips": "Individual Tips",
+  "config.igtips.common.option.individual_tips.tooltip": "Enables or disables the tips to be sent individually to each client. If this option is deactivated, the server will send the same tip to all connected clients at the same time."
 }

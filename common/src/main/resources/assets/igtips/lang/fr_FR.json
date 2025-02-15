@@ -23,10 +23,10 @@
   "config.igtips.common.option.disabled_namespaces.tooltip": "Sets the namespaces will not be loaded on datapack loading/reloading. This option is useful for disabling tips from specific mods (modid) or packs (datapackid).",
   "config.igtips.common.option.disabled_namespaces.error.empty": "One or more namespaces are empty fields.",
   "config.igtips.common.option.disabled_namespaces.error.invalid": "Use only lowercase letters, numbers, _, -, and .",
-  "config.igtips.common.option.tip_recycling": "Tip Recycling",
-  "config.igtips.common.option.tip_recycling.tooltip": "Enables or disables the reuse of tips that have already been displayed. When this option is activated, viewed tips will be reset after the last tip has been displayed.",
-  "config.igtips.common.option.sync_sending": "Synchronize Sending",
-  "config.igtips.common.option.sync_sending.tooltip": "This option allows the server to send tips to all connected clients at the same time. If this option is deactivated, the server will send tips to each client individually with their own schedule time.",
-  "config.igtips.common.option.individual_tips": "Individual Tips",
-  "config.igtips.common.option.individual_tips.tooltip": "Enables or disables the tips to be sent individually to each client. If this option is deactivated, the server will send the same tip to all connected clients at the same time."
+  "config.igtips.common.option.tip_recycling": "Recyclage d'astuce",
+  "config.igtips.common.option.tip_recycling.tooltip": "Active ou désactive la réutilisation d'astuces qui ont déjà été distribuées. Quand cette option est activée, les astuces qui ont été lues seront réinitialisées après que la dernière astuce soit distribuée.",
+  "config.igtips.common.option.sync_sending": "Synchronise l'envoi",
+  "config.igtips.common.option.sync_sending.tooltip": "Cette option autorise le serveur à envoyer des astuces à tous les clients connectés en même temps. Si cette option est désactivée, le serveur va envoyer des astuces à chaque client individuellement avec leur propre horaire.",
+  "config.igtips.common.option.individual_tips": "Astuce Individuelle",
+  "config.igtips.common.option.individual_tips.tooltip": "Active ou désactive les astuces qui doivent être envoyées individuellement à chaque client. Si cette option est désactivée, le serveur va envoyer la même astuce à tous les clients connectés en même temps."
 }

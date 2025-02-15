@@ -2,7 +2,7 @@
   "commands.igtips.tip.unknown": "L'astúcia %s existís pas. Asseguratz vos qu'utilizatz la bona denominacion e qu'es cargada sul servidor.",
   "commands.igtips.tip.send.success": "Astúcia %s enviada a %s.",
   "tip.igtips.name": "Astúcia",
-  "config.igtips.main.title": "In-Game Tips Options",
+  "config.igtips.main.title": "InGameTips Options",
   "config.igtips.main.button.client": "Client Settings",
   "config.igtips.main.button.common.available": "Common Settings",
   "config.igtips.main.button.common.unavailable": "Reglatges Comuns (Non disponible)",

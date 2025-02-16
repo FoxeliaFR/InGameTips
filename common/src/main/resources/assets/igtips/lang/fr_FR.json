@@ -16,7 +16,7 @@
   "config.igtips.common.title.local": "Options Communes (Local)",
   "config.igtips.common.title.server": "Options Communes (Serveur distant)",
   "config.igtips.common.category.general": "Général",
-  "config.igtips.common.category.sync": "Synchronisation",
+  "config.igtips.common.category.sync": "Synchronisation ",
   "config.igtips.common.option.schedule_time": "Durée de planification",
   "config.igtips.common.option.schedule_time.tooltip": "Choisissez le temps en seconde entre chaque astuce. Si la valeur est de 0, les astuces ne s'enverront pas automatiquement.\n\nExemple : 60 (1 minute), 90 (1 minute et 30 secondes), 300 (5 minutes)",
   "config.igtips.common.option.disabled_namespaces": "Namespaces désactivés",
@@ -25,7 +25,7 @@
   "config.igtips.common.option.disabled_namespaces.error.invalid": "Utilisez seulement des minuscules, chiffres, _, -, et .",
   "config.igtips.common.option.tip_recycling": "Recyclage d'astuce",
   "config.igtips.common.option.tip_recycling.tooltip": "Active ou désactive la réutilisation d'astuces qui ont déjà été affichés. Quand cette option est activée, les astuces qui ont été vues seront réinitialisées après que la dernière astuce ait été affichée.",
-  "config.igtips.common.option.sync_sending": "Synchroniser les envoies",
+  "config.igtips.common.option.sync_sending": "Synchroniser les envois ",
   "config.igtips.common.option.sync_sending.tooltip": "Cette option autorise le serveur à envoyer des astuces à tous les clients connectés en même temps. Si cette option est désactivée, le serveur va envoyer des astuces à chaque client individuellement avec leur propre horaire.",
   "config.igtips.common.option.individual_tips": "Astuce Individuelle",
   "config.igtips.common.option.individual_tips.tooltip": "Active ou désactive les astuces qui doivent être envoyées individuellement à chaque client. Si cette option est désactivée, le serveur va envoyer la même astuce à tous les clients connectés en même temps."

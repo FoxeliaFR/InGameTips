@@ -8,7 +8,7 @@
   "config.igtips.main.button.common.unavailable": "Paramètres communs (indisponibles)",
   "config.igtips.client.title": "Options du client",
   "config.igtips.client.option.tips_enabled": "Afficher les astuces",
-  "config.igtips.client.option.tips_enabled.tooltip": "Active ou désactive l'affichage des astuces. Si cette option est désactivée, les astuces reçues du serveur ne seront pas affichés, mais seront quand même marquées comme ayant été visionnés.",
+  "config.igtips.client.option.tips_enabled.tooltip": "Active ou désactive l'affichage des astuces. Si cette option est désactivée, les astuces du serveur reçues ne seront pas affichées, mais seront quand même marquées comme ayant été visionnés.",
   "config.igtips.client.option.sound_enabled": "Activer le son",
   "config.igtips.client.option.sound_enabled.tooltip": "Active ou désactive le son joué lorsqu'une nouvelle astuce est reçue.",
   "config.igtips.client.option.max_lines": "Nombre maximum de lignes",

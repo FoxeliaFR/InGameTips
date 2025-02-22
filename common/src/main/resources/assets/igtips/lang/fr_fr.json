@@ -18,7 +18,7 @@
   "config.igtips.common.category.general": "Général",
   "config.igtips.common.category.sync": "Synchronisation ",
   "config.igtips.common.option.schedule_time": "Durée de planification",
-  "config.igtips.common.option.schedule_time.tooltip": "Choisissez le temps en seconde entre chaque astuce. Si la valeur est de 0, les astuces ne s'enverront pas automatiquement.\n\nExemple : 60 (1 minute), 90 (1 minute et 30 secondes), 300 (5 minutes)",
+  "config.igtips.common.option.schedule_time.tooltip": "Définit le temps en seconde entre chaque astuce. Si la valeur est de 0, les astuces ne s'enverront pas automatiquement.\n\nExemple : 60 (1 minute), 90 (1 minute et 30 secondes), 300 (5 minutes)",
   "config.igtips.common.option.disabled_namespaces": "Namespaces désactivés",
   "config.igtips.common.option.disabled_namespaces.tooltip": "Définit les namespaces qui ne seront pas chargés lors du chargement ou du rechargement des datapacks. Cette option est utile pour désactiver les astuces de certains mods (modid) ou packs (datapackid).",
   "config.igtips.common.option.disabled_namespaces.error.empty": "Un ou plusieurs namespaces sont des champs vides.",

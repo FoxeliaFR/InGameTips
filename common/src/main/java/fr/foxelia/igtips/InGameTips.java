@@ -1,6 +1,5 @@
 package fr.foxelia.igtips;
 
-import dev.architectury.platform.Platform;
 import fr.foxelia.igtips.client.config.ClientConfig;
 import fr.foxelia.igtips.client.event.ClientEventHandler;
 import fr.foxelia.igtips.client.event.OverlayEventHandler;
@@ -11,7 +10,6 @@ import fr.foxelia.igtips.event.ConfigEventHandler;
 import fr.foxelia.igtips.event.ScheduleEventHandler;
 import fr.foxelia.igtips.event.ServerEventHandler;
 import fr.foxelia.igtips.network.NetworkHandler;
-import net.fabricmc.api.EnvType;
 import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

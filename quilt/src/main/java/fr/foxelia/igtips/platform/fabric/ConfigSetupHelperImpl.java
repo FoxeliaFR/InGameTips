@@ -1,8 +1,8 @@
 package fr.foxelia.igtips.platform.fabric;
 
 import fr.foxelia.igtips.client.config.IClientInGameTipsConfig;
-import fr.foxelia.igtips.quilt.client.config.QuiltClientConfig;
 import fr.foxelia.igtips.config.ICommonInGameTipsConfig;
+import fr.foxelia.igtips.quilt.client.config.QuiltClientConfig;
 import fr.foxelia.igtips.quilt.config.QuiltCommonConfig;
 import org.quiltmc.loader.api.config.v2.QuiltConfig;
 

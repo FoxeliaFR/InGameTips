@@ -1,5 +1,5 @@
 modLoader = "javafml"
-loaderVersion = "[47,)"
+loaderVersion = "[46,)"
 issueTrackerURL = "${issue_tracker}"
 license = "${mod_license}"
 
@@ -14,14 +14,14 @@ logoFile = "${mod_logo}"
 [[dependencies.igtips]]
 modId = "forge"
 mandatory = true
-versionRange = "[47,)"
+versionRange = "[46,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.igtips]]
 modId = "minecraft"
 mandatory = true
-versionRange = "${minecraft_version}"
+versionRange = "[${minecraft_version},1.20.1]"
 ordering = "NONE"
 side = "BOTH"
 

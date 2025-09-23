@@ -68,7 +68,7 @@ public class RandomTipCommand {
         }
 
         // Success / Failure lists
-        Pair<List<ServerPlayerEntity>, List<ServerPlayerEntity>> result = new Pair<>(List.of(), List.of());
+        Pair<List<ServerPlayerEntity>, List<ServerPlayerEntity>> result = new Pair<>(new ArrayList<>(), new ArrayList<>());
         for(Map.Entry<ServerPlayerEntity, TranslatableTip> entry : tips.entrySet()) {
             TranslatableTip tip = entry.getValue();
             if(tip == null) {
@@ -81,11 +81,15 @@ public class RandomTipCommand {
         }
 
         if(result.getRight().isEmpty()) {
-            source.sendFeedback(() -> Text.translatable("commands.igtips.tip.random.success", result.getLeft()), true);
+            Collection<String> playerNames = result.getLeft().stream().map(player -> player.getDisplayName().getString()).toList();
+            source.sendFeedback(() -> Text.translatable("commands.igtips.tip.random.success", playerNames), true);
         } else if(result.getLeft().isEmpty()) {
-            source.sendError(Text.translatable("commands.igtips.tip.random.no_tips_players", result.getRight()));
+            Collection<String> playerNames = result.getRight().stream().map(player -> player.getDisplayName().getString()).toList();
+            source.sendError(Text.translatable("commands.igtips.tip.random.no_tips_players", playerNames));
         } else {
-            source.sendFeedback(() -> Text.translatable("commands.igtips.tip.random.partial_success", result.getLeft(), result.getRight()), true);
+            Collection<String> successNames = result.getLeft().stream().map(player -> player.getDisplayName().getString()).toList();
+            Collection<String> failureNames = result.getRight().stream().map(player -> player.getDisplayName().getString()).toList();
+            source.sendFeedback(() -> Text.translatable("commands.igtips.tip.random.partial_success", successNames, failureNames), true);
         }
         return 1;
     }

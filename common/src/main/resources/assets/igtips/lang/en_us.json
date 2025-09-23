@@ -1,6 +1,14 @@
 {
   "commands.igtips.tip.unknown": "The tip %s does not exist. Make sure you are using the correct name and ensure that's loaded on the server.",
   "commands.igtips.tip.send.success": "Tip %s sent to %s.",
+  "commands.igtips.tip.random.no_tips": "There are no tips available to send.",
+  "commands.igtips.tip.random.success": "Random tip(s) sent to %s.",
+  "commands.igtips.tip.random.no_tips_players": "No tips available to send to %s.",
+  "commands.igtips.tip.random.partial_success": "Random tip(s) sent to %s. However, %s could not receive a tip because there are no tips available for them.",
+
+
+  "argument.igtips.tip.random.invalid": "Unknown random mode: %s",
+  "argument.igtips.boolean.invalid": "Invalid boolean value: %s. Please use true or false.",
 
 
   "tip.igtips.name": "Tip",

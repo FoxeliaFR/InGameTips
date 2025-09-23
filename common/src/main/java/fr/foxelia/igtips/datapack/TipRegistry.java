@@ -1,11 +1,11 @@
 package fr.foxelia.igtips.datapack;
 
+import fr.foxelia.igtips.data.TipHistory;
 import fr.foxelia.igtips.tip.TranslatableTip;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class TipRegistry {
 
@@ -32,6 +32,22 @@ public class TipRegistry {
             return null;
         }
         return TIPS.get(key);
+    }
+
+    @Nullable
+    public static Identifier getRandomTip() {
+        return getRandomTip(Collections.emptySet());
+    }
+
+    @Nullable
+    public static Identifier getRandomTip(Set<Identifier> excludedTips) {
+        if(TIPS.isEmpty()) return null;
+        Set<Identifier> availableTips = new HashSet<>(TIPS.keySet());
+        availableTips.removeAll(excludedTips);
+        if(!availableTips.isEmpty()) {
+            return (Identifier) availableTips.toArray()[new Random().nextInt(availableTips.size())];
+        }
+        return null;
     }
 
     public static Map<Identifier, TranslatableTip> getAllTips() {

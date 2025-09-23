@@ -13,7 +13,7 @@ public class ScheduleManager {
 
     public static final ScheduleManager INSTANCE = new ScheduleManager();
 
-    protected static final String COMMON_SCHEDULE = "common";
+    public static final String COMMON_SCHEDULE = "common";
 
     private final Map<String, Schedule> schedules = new HashMap<>();
 

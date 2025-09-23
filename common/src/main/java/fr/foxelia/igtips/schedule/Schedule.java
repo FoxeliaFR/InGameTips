@@ -1,6 +1,7 @@
 package fr.foxelia.igtips.schedule;
 
 import fr.foxelia.igtips.config.CommonConfig;
+import fr.foxelia.igtips.data.HistoryManager;
 import fr.foxelia.igtips.data.TipHistory;
 import fr.foxelia.igtips.datapack.TipRegistry;
 import fr.foxelia.igtips.network.NetworkHandler;
@@ -11,10 +12,6 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.HashSet;
-import java.util.Random;
-import java.util.Set;
-
 public abstract class Schedule {
 
     private final TipHistory tipHistory;
@@ -23,44 +20,15 @@ public abstract class Schedule {
     private int executionTick = -1;
 
     public Schedule(String viewerID) {
-        this.tipHistory = new TipHistory(viewerID);
+        this.tipHistory = HistoryManager.getHistoryOf(viewerID);
         updateExecutionTick();
-    }
-
-    protected TipHistory getTipHistory() {
-        return tipHistory;
     }
 
     @Nullable
     protected TranslatableTip getTipAndUse() {
-        Identifier tipId = getRandTip();
+        Identifier tipId = tipHistory.getRandomTip(true);
         if(tipId == null) return null;
-        useTip(tipId);
         return TipRegistry.getTip(tipId);
-    }
-
-    @Nullable
-    private Identifier getRandTip() {
-        // Get all available tips
-        Set<Identifier> availableTips = new HashSet<>(TipRegistry.getAllTips().keySet());
-        availableTips.removeAll(getTipHistory().getViewedTips());
-        if(availableTips.isEmpty()) {
-            if(CommonConfig.isRecyclingTips()) {
-                if(!TipRegistry.getAllTips().keySet().isEmpty()) {
-                    getTipHistory().getViewedTips().clear();
-                    return getRandTip();
-                }
-            }
-            return null;
-        }
-
-        // Select a random tip
-        return (Identifier) availableTips.toArray()[new Random().nextInt(availableTips.size())];
-    }
-
-    private void useTip(Identifier tipId) {
-        getTipHistory().addTip(tipId);
-        getTipHistory().saveHistory();
     }
 
     protected void sendTip(ServerPlayerEntity player, TranslatableTip tip) {

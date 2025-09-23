@@ -1,17 +1,17 @@
 package fr.foxelia.igtips.data;
 
-import fr.foxelia.igtips.InGameTips;
+import fr.foxelia.igtips.config.CommonConfig;
+import fr.foxelia.igtips.datapack.TipRegistry;
 import net.minecraft.util.Identifier;
+import org.jetbrains.annotations.Nullable;
 
 import java.io.*;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.HashSet;
 import java.util.Set;
 
-public class TipHistory {
+import static fr.foxelia.igtips.data.HistoryManager.HISTORY_PATH;
 
-    private static Path HISTORY_PATH = null;
+public class TipHistory {
 
     private final File historyFile;
     private final Set<Identifier> viewedTips;
@@ -32,6 +32,20 @@ public class TipHistory {
 
     public Set<Identifier> getViewedTips() {
         return viewedTips;
+    }
+
+    @Nullable
+    public Identifier getRandomTip(boolean use) {
+        Identifier tip = TipRegistry.getRandomTip(getViewedTips());
+        if (tip == null && CommonConfig.isRecyclingTips()) {
+            viewedTips.clear();
+            tip = TipRegistry.getRandomTip(getViewedTips());
+        }
+        if(tip != null && use) {
+            addTip(tip);
+            saveHistory();
+        }
+        return tip;
     }
 
     public void saveHistory() {
@@ -57,9 +71,5 @@ public class TipHistory {
                 e.printStackTrace();
             }
         }
-    }
-
-    public static void registerWorldData(Path worldPath) {
-        HISTORY_PATH = Paths.get(worldPath.toString(), "data", InGameTips.MOD_ID, "history");
     }
 }
